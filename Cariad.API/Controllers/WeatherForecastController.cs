@@ -3,20 +3,16 @@ using Microsoft.AspNetCore.Mvc;
 namespace Cariad.API.Controllers;
 
 [ApiController]
-[Route("[controller]")]
-internal sealed class WeatherForecastController : ControllerBase
+[Route("api/[controller]")]
+public class WeatherForecastController : ControllerBase
 {
-    private static readonly string[] Summaries = new[]
+    private string[] Summaries = new[]
     {
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     };
 
-    private readonly ILogger<WeatherForecastController> _logger;
-
-    public WeatherForecastController(ILogger<WeatherForecastController> logger) => _logger = logger;
-
     [HttpGet(Name = "GetWeatherForecast")]
-    public static IEnumerable<WeatherForecast> Get()
+    public IEnumerable<WeatherForecast> Get()
     {
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
