@@ -22,6 +22,7 @@ builder.Services.Configure<CircuitOptions>(options =>
 
 builder.Services.AddSingleton<ICaresScreensService, CaresScreenService>();
 builder.Services.AddSingleton<ICaresScreensRepository, CaresScreenRepo>();
+builder.Services.AddSingleton<IActionsRepository, ActionsRepository>();
 
 var app = builder.Build();
 

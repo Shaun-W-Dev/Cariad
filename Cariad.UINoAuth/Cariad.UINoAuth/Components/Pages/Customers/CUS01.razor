@@ -413,12 +413,9 @@
 
     private async Task PopulateCustomerDetails()
     {
-        Console.WriteLine("Button Clicked!"); // Check if this prints
         _customerDetails = GenerateDummyCustomer();
         await InvokeAsync(StateHasChanged);
     }
-
-
 
     private Cariad.Domain.DTOs.Customer.Cus01 GenerateDummyCustomer()
     {

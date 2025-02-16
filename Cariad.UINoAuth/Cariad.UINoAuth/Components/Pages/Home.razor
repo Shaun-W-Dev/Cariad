@@ -1,2 +1,100 @@
 ﻿@page "/"
-<h3>Test</h3>
+@rendermode InteractiveServer
+
+@inject IActionsRepository _actionsRepository
+<PageTitle> Cariad | Welcome</PageTitle>
+
+<ScreenHeading PageTitle="Croeso Shaun"></ScreenHeading>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <a href="/cus01" class="button-primary">Create new customer</a>
+            </div>
+            <div class="col">
+                <a href="#" class="button-secondary">Useful button</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col pt-4">
+
+                <div class="form form-group">
+                    <h2 class="fw-bold">Actions</h2>
+
+                    @if (_actions is null)
+                    {
+                        <div class="row">
+                            <div class="col">
+                                <p>
+                                    No actions to display.
+                                </p>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        @foreach (var action in _actions)
+                        {
+                            <div class="row">
+                                <div class="col">
+                                    <p>
+                                        @action.Title
+                                    </p>
+                                </div>
+                                <div class="col">
+                                    <p>
+                                        @action.Description
+                                    </p>
+                                </div>
+                                <div class="col-1">
+                                    @if (action.Status == "Active")
+                                    {
+                                        <p class="rounded-pill bg-success text-white d-inline p-2">
+                                            @action.Status
+                                        </p>
+                                    }
+                                    else @if (action.Status == "Pending")
+                                    {
+                                        <p class="rounded-pill bg-info text-white d-inline p-2">
+                                            @action.Status
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                        <p class="rounded-pill bg-danger text-white d-inline p-2">
+                                            @action.Status
+                                        </p>
+                                    }
+                                </div>
+                                <div class="col">
+                                    <p>
+                                        @action.Created
+                                    </p>
+                                </div>
+                                <div class="col">
+                                    <p>
+                                        <a href="#" class="small button-primary">
+                                            Edit
+                                        </a>
+                                        <a href="#" class="small button-primary">
+                                            Complete
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@code {
+    private IEnumerable<Cariad.Domain.DTOs.User.ActionsDto> _actions;
+    protected override async Task OnInitializedAsync()
+    {
+        _actions = await _actionsRepository.GetActionsAsync();
+    }
+}
