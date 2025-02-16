@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-window.initializeDropdowns = function () {
+function initializeDropdowns() {
     var dropdownBtn = document.querySelectorAll(".dropdown-btn");
     var dropdown = document.querySelectorAll(".dropdown");
     var hamburgerBtn = document.getElementById("hamburger");
@@ -61,5 +61,5 @@ window.initializeDropdowns = function () {
             setAriaExpandedFalse();
         }
     });
-};
+}
 

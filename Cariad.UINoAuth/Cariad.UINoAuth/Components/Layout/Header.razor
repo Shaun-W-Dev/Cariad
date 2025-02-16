@@ -1,5 +1,6 @@
 ﻿@using Cariad.Application.Interfaces
-@inject IJSRuntime _jsRuntime
+@rendermode InteractiveServer
+@inject IJSRuntime JS
 @inject ICaresScreensService _caresScreenService
 
 @if (_pages is not null)
@@ -87,7 +88,7 @@
                                         <a class="nav-link" href="all-screens">All Screens</a>
                                     </li>
                                     <li>
-                                        <a class="nav-link" href="cus-01">All Screens</a>
+                                        <a class="nav-link" href="cus01">Cus 01</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -141,12 +142,10 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        // if (firstRender)
-        // {
-        //     await _jsRuntime.InvokeVoidAsync("initializeDropdowns");
-        // }
-
-        await _jsRuntime.InvokeVoidAsync("alert", "JS Interop is working!");
-
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("initializeDropdowns");
+        }
+        await base.OnAfterRenderAsync(firstRender);
     }
 }

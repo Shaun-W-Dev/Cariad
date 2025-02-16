@@ -1,8 +1,11 @@
 global using Cariad.Domain.Models;
+global using Cariad.Domain.DTOs;
+global using System.Text;
 using Cariad.UINoAuth.Components;
 using Cariad.Application.Interfaces;
 using Cariad.Application.Services;
 using Cariad.Infrastructure.Repositories;
+using Microsoft.AspNetCore.Components.Server;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +14,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
+
+builder.Services.Configure<CircuitOptions>(options =>
+{
+    options.DetailedErrors = true;
+});
 
 builder.Services.AddSingleton<ICaresScreensService, CaresScreenService>();
 builder.Services.AddSingleton<ICaresScreensRepository, CaresScreenRepo>();

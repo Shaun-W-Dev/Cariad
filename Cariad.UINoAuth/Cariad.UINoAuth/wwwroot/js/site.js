@@ -1,4 +1,4 @@
-﻿window.initializeDropdowns = function() {
+﻿function initializeDropdowns() {
     const dropdownBtn = document.querySelectorAll(".dropdown-btn");
     const dropdown = document.querySelectorAll(".dropdown");
     const hamburgerBtn = document.getElementById("hamburger");

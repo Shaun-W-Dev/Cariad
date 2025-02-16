@@ -1,12 +1,20 @@
 ﻿@inject NavigationManager _nav
 @page "/cus01"
+@rendermode InteractiveServer
 
 <PageTitle>Cariad | CUS01 - Customer Details</PageTitle>
 
 <ScreenHeading PageTitle="CUS01 - Customer Details"></ScreenHeading>
 <div class="container">
+    <div class="row pb-5">
+        <div class="col">
+            <div class="button-container">
+                <button type="button" class="button-primary" @onclick="PopulateCustomerDetails">Pre-populate details</button>
+            </div>
+        </div>
+    </div>
 
-    <EditForm Model="_customerDetails" OnValidSubmit="HandleValidSubmit">
+    <EditForm FormName="CreateCustomerForm" Model="_customerDetails" OnValidSubmit="HandleValidSubmit">
         <DataAnnotationsValidator />
         <ValidationSummary />
 
@@ -186,43 +194,43 @@
                         <div class="item">
                             <label for="HasForeignAddress">Foreign Address:</label>
                             <InputSelect id="HasForeignAddress" @bind-Value="_customerDetails.HasForeignAddress">
-                                <option value="True">Yes</option>
-                                <option value="False">No</option>
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
                             </InputSelect>
                         </div>
                         <div class="item">
                             <label for="IsAddressKnown">Unknown Address:</label>
                             <InputSelect id="IsAddressKnown" @bind-Value="_customerDetails.IsAddressKnown">
-                                <option value="True">Yes</option>
-                                <option value="False">No</option>
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
                             </InputSelect>
                         </div>
                         <div class="item">
                             <label for="HasMailshotsAllowed">Are Mailshots Allowed:</label>
                             <InputSelect id="HasMailshotsAllowed" @bind-Value="_customerDetails.HasMailshotsAllowed">
-                                <option value="True">Yes</option>
-                                <option value="False">No</option>
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
                             </InputSelect>
                         </div>
                         <div class="item">
                             <label for="HasWelshMailshows">Welsh Mailshots:</label>
                             <InputSelect id="HasWelshMailshows" @bind-Value="_customerDetails.HasWelshMailshows">
-                                <option value="True">Yes</option>
-                                <option value="False">No</option>
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
                             </InputSelect>
                         </div>
                         <div class="item">
                             <label for="IsEmailsAllowed">Emails Allowed:</label>
                             <InputSelect id="IsEmailsAllowed" @bind-Value="_customerDetails.IsEmailsAllowed">
-                                <option value="True">Yes</option>
-                                <option value="False">No</option>
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
                             </InputSelect>
                         </div>
                         <div class="item">
                             <label for="IsTelephoneAllowed">Telephone Allowed:</label>
                             <InputSelect id="IsTelephoneAllowed" @bind-Value="_customerDetails.IsTelephoneAllowed">
-                                <option value="True">Yes</option>
-                                <option value="False">No</option>
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
                             </InputSelect>
                         </div>
                     </div>
@@ -230,22 +238,22 @@
                         <div class="item">
                             <label for="IsSmsAllowed">SMS Allowed:</label>
                             <InputSelect id="IsSmsAllowed" @bind-Value="_customerDetails.IsSmsAllowed">
-                                <option value="True">Yes</option>
-                                <option value="False">No</option>
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
                             </InputSelect>
                         </div>
                         <div class="item">
                             <label for="HasMembersRewards">Members Rewards:</label>
                             <InputSelect id="HasMembersRewards" @bind-Value="_customerDetails.HasMembersRewards">
-                                <option value="True">Yes</option>
-                                <option value="False">No</option>
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
                             </InputSelect>
                         </div>
                         <div class="item">
                             <label for="IsMarketingPreferencesUpToDate">Refresh Marketing Preferences:</label>
                             <InputSelect id="IsMarketingPreferencesUpToDate" @bind-Value="_customerDetails.IsMarketingPreferencesUpToDate">
-                                <option value="True">Yes</option>
-                                <option value="False">No</option>
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
                             </InputSelect>
                         </div>
                     </div>
@@ -260,24 +268,24 @@
                         <div class="item">
                             <label for="IsTaxResidentOutsideUK">Tax Resident other than UK:</label>
                             <InputSelect id="IsTaxResidentOutsideUK" @bind-Value="_customerDetails.IsTaxResidentOutsideUK">
-                                <option value="True">Yes</option>
-                                <option value="False">No</option>
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
                             </InputSelect>
                         </div>
                         <div class="item">
                             <label for="IsAUSCitizen">Citizen of the USA:</label>
                             <InputSelect id="IsAUSCitizen" @bind-Value="_customerDetails.IsAUSCitizen">
-                                <option value="True">Yes</option>
-                                <option value="False">No</option>
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
                             </InputSelect>
                         </div>
                     </div>
-                    <div class="grid-2">
+                    <div class="grid-2 d-none">
                         <div class="item">
                             <label><b>Tax Residency</b></label>
                             <InputSelect id="TaxResidencyCountry1" @bind-Value="_customerDetails.TaxResidencyCountry1">
-                                <option value="True">Yes</option>
-                                <option value="False">No</option>
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
                             </InputSelect>
                         </div>
                         <div class="item">
@@ -286,8 +294,8 @@
                         </div>
                         <div class="item">
                             <InputSelect id="TaxResidencyCountry2" @bind-Value="_customerDetails.TaxResidencyCountry2">
-                                <option value="True">Yes</option>
-                                <option value="False">No</option>
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
                             </InputSelect>
                         </div>
                         <div class="item">
@@ -295,8 +303,8 @@
                         </div>
                         <div class="item">
                             <InputSelect id="TaxResidencyCountry3" @bind-Value="_customerDetails.TaxResidencyCountry3">
-                                <option value="True">Yes</option>
-                                <option value="False">No</option>
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
                             </InputSelect>
                         </div>
                         <div class="item">
@@ -332,8 +340,8 @@
                         <div class="item">
                             <label for="IdName1">1st Name ID:</label>
                             <InputSelect id="IdName1" @bind-Value="_customerDetails.IdName1">
-                                <option value="True">Yes</option>
-                                <option value="False">No</option>
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
                             </InputSelect>
                         </div>
                         <div class="item">
@@ -343,8 +351,8 @@
                         <div class="item">
                             <label for="IdAddress1">1st Address ID:</label>
                             <InputSelect id="IdAddress1" @bind-Value="_customerDetails.IdAddress1">
-                                <option value="True">Yes</option>
-                                <option value="False">No</option>
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
                             </InputSelect>
                         </div>
                         <div class="item">
@@ -354,8 +362,8 @@
                         <div class="item">
                             <label for="IdName2">2nd Name ID:</label>
                             <InputSelect id="IdName2" @bind-Value="_customerDetails.IdName2">
-                                <option value="True">Yes</option>
-                                <option value="False">No</option>
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
                             </InputSelect>
                         </div>
                         <div class="item">
@@ -365,8 +373,8 @@
                         <div class="item">
                             <label for="IdAddress2">2nd Address ID:</label>
                             <InputSelect id="IdAddress2" @bind-Value="_customerDetails.IdAddress2">
-                                <option value="True">Yes</option>
-                                <option value="False">No</option>
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
                             </InputSelect>
                         </div>
                         <div class="item">
@@ -389,12 +397,86 @@
 </div>
 
 @code {
-    public CopyCat.Core.DTOs.Cus01 _customerDetails = new Core.DTOs.Cus01();
-    public StringBuilder _customErrorHandler = new StringBuilder();
+    private Cariad.Domain.DTOs.Customer.Cus01 _customerDetails = new Domain.DTOs.Customer.Cus01();
     public string PrimaryActionButtonText { get; set; } = "Create";
+
+    protected override void OnInitialized()
+    {
+        Console.WriteLine("Component Initialized!");
+    }
+
 
     private async Task HandleValidSubmit()
     {
 
+    }
+
+    private async Task PopulateCustomerDetails()
+    {
+        Console.WriteLine("Button Clicked!"); // Check if this prints
+        _customerDetails = GenerateDummyCustomer();
+        await InvokeAsync(StateHasChanged);
+    }
+
+
+
+    private Cariad.Domain.DTOs.Customer.Cus01 GenerateDummyCustomer()
+    {
+        return new Cariad.Domain.DTOs.Customer.Cus01
+            {
+                CustomerNumber = Guid.NewGuid().ToString("N").Substring(0, 10),
+                Title = "Mr",
+                Forename = "Homer",
+                Surname = "Simpson",
+                Initials = "H. S.",
+                Nationality = "American",
+                OccupationStatus = "Employed",
+                Occupation = "Safety Inspector",
+                DateOfBirth = "1956-05-12",
+                DateOfDeath = "",
+                CharityNumber = "",
+                SexStatus = "Male",
+                DeliveryChannel = "Email",
+                NationalInsuranceNumber = "JK999999C",
+                MaritalStatus = "Married",
+                Source = "TV Show",
+                Company = "Springfield Nuclear Power Plant",
+                AccountOpeningDate = DateTime.UtcNow.AddYears(-5),
+                CharitableAssignement = "",
+                MembershipLength = "5 years",
+                IsPbsEmpoloyee = false,
+                Street = "Evergreen Terrace",
+                District = "Unknown District",
+                Town = "Springfield",
+                County = "West Yorkshire",
+                Postcode = "51MP 5ON",
+                HomeTelephoneNumber = "01632 960001",
+                MobileTelephoneNumber = "07700 900123",
+                WorkTelephoneNumber = "01632 960002",
+                Fax = "",
+                EmailAddress = "homer.simpson@springfieldpower.com",
+                MobileAuthorisationDate = DateTime.UtcNow.ToString("yyyy-MM-dd"),
+                HasForeignAddress = false,
+                IsAddressKnown = true,
+                HasMailshotsAllowed = true,
+                HasWelshMailshows = false,
+                IsEmailsAllowed = true,
+                IsTelephoneAllowed = false,
+                IsSmsAllowed = false,
+                HasMembersRewards = true,
+                IsMarketingPreferencesUpToDate = true,
+                CountryOfBirth = "USA",
+                BirthPlace = "Springfield",
+                ResidenceCountryCode = "GB",
+                IsTaxResidentOutsideUK = false,
+                IsAUSCitizen = false,
+                TaxResidencyCountry1 = "GB",
+                TinNumber1 = "AB123456C",
+                DateCreated = DateTime.UtcNow,
+                CreatedBy = "Admin",
+                LastUpdated = DateTime.UtcNow,
+                LastUpdatedBy = "Admin",
+                LastInteractionDate = DateTime.UtcNow
+            };
     }
 }
