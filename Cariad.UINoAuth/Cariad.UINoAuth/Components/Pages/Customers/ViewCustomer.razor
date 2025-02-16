@@ -1,0 +1,129 @@
+﻿@page "/view-customer"
+
+@rendermode InteractiveServer
+
+<PageTitle>Cariad | View - Customer Details</PageTitle>
+
+<ScreenHeading PageTitle="View - Customer Details"></ScreenHeading>
+
+
+<div class="container">
+    <div class="row pb-5">
+        <div class="col">
+            <div class="form form-group">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h4>Customer Info</h4>
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Customer Number</th>
+                                        <td>@_customerDetails.CustomerNumber</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Title</th>
+                                        <td>@_customerDetails.Title</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Forename</th>
+                                        <td>@_customerDetails.Forename</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Surname</th>
+                                        <td>@_customerDetails.Surname</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row pt-4">
+                        <div class="col">
+                            <h4>Notes</h4>
+                            <p>
+                                There is currently, no notes to display.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row pt-4">
+                        <div class="col">
+                            <h4>Audit History</h4>
+                            <p>
+                                There is currently, no audit history to display.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private Cariad.Domain.DTOs.Customer.Cus01 _customerDetails = new Domain.DTOs.Customer.Cus01();
+
+    protected override void OnInitialized()
+    {
+        _customerDetails = SetDummyCustomer();
+    }
+
+    private Cariad.Domain.DTOs.Customer.Cus01 SetDummyCustomer()
+    {
+        return new Cariad.Domain.DTOs.Customer.Cus01
+            {
+                CustomerNumber = Guid.NewGuid().ToString("N").Substring(0, 10),
+                Title = "Mr",
+                Forename = "Homer",
+                Surname = "Simpson",
+                Initials = "H. S.",
+                Nationality = "American",
+                OccupationStatus = "Employed",
+                Occupation = "Safety Inspector",
+                DateOfBirth = "1956-05-12",
+                DateOfDeath = "",
+                CharityNumber = "",
+                SexStatus = "Male",
+                DeliveryChannel = "Email",
+                NationalInsuranceNumber = "JK999999C",
+                MaritalStatus = "Married",
+                Source = "TV Show",
+                Company = "Springfield Nuclear Power Plant",
+                AccountOpeningDate = DateTime.UtcNow.AddYears(-5),
+                CharitableAssignement = "",
+                MembershipLength = "5 years",
+                IsPbsEmpoloyee = false,
+                Street = "Evergreen Terrace",
+                District = "Unknown District",
+                Town = "Springfield",
+                County = "West Yorkshire",
+                Postcode = "51MP 5ON",
+                HomeTelephoneNumber = "01632 960001",
+                MobileTelephoneNumber = "07700 900123",
+                WorkTelephoneNumber = "01632 960002",
+                Fax = "",
+                EmailAddress = "homer.simpson@springfieldpower.com",
+                MobileAuthorisationDate = DateTime.UtcNow.ToString("yyyy-MM-dd"),
+                HasForeignAddress = false,
+                IsAddressKnown = true,
+                HasMailshotsAllowed = true,
+                HasWelshMailshows = false,
+                IsEmailsAllowed = true,
+                IsTelephoneAllowed = false,
+                IsSmsAllowed = false,
+                HasMembersRewards = true,
+                IsMarketingPreferencesUpToDate = true,
+                CountryOfBirth = "USA",
+                BirthPlace = "Springfield",
+                ResidenceCountryCode = "GB",
+                IsTaxResidentOutsideUK = false,
+                IsAUSCitizen = false,
+                TaxResidencyCountry1 = "GB",
+                TinNumber1 = "AB123456C",
+                DateCreated = DateTime.UtcNow,
+                CreatedBy = "Admin",
+                LastUpdated = DateTime.UtcNow,
+                LastUpdatedBy = "Admin",
+                LastInteractionDate = DateTime.UtcNow
+            };
+    }
+}

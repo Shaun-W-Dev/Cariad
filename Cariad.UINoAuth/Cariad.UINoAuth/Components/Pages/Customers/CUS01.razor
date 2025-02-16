@@ -385,35 +385,48 @@
                 </div>
             </div>
         </div>
+
+        @if (!_swapPrimaryScreenActions)
+        {
+            <div class="row pb-5">
+                <div class="col">
+                    <div class="button-container">
+                        <button type="submit" class="button-primary">@PrimaryActionButtonText - Customer</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </EditForm>
+
+    @if (_swapPrimaryScreenActions)
+    {
         <div class="row pb-5">
             <div class="col">
                 <div class="button-container">
-                    <button type="submit" class="button-primary">@PrimaryActionButtonText - Customer</button>
+                    <a href="/view-customer?id=@_newCustomerNumber" class="button-primary">View Customer Details</a>
+                    <button type="button" class="button-secondary" @onclick="RefreshPage">Create New Customer</button>
                 </div>
             </div>
         </div>
-    </EditForm>
-
+    }
 </div>
 
 @code {
+    private bool _swapPrimaryScreenActions = false;
+    private string _newCustomerNumber = string.Empty;
     private Cariad.Domain.DTOs.Customer.Cus01 _customerDetails = new Domain.DTOs.Customer.Cus01();
     public string PrimaryActionButtonText { get; set; } = "Create";
 
-    protected override void OnInitialized()
-    {
-        Console.WriteLine("Component Initialized!");
-    }
-
-
     private async Task HandleValidSubmit()
     {
-
+        _swapPrimaryScreenActions = true;
+        await InvokeAsync(StateHasChanged);
     }
 
     private async Task PopulateCustomerDetails()
     {
         _customerDetails = GenerateDummyCustomer();
+        _newCustomerNumber = _customerDetails.CustomerNumber;
         await InvokeAsync(StateHasChanged);
     }
 
@@ -475,5 +488,10 @@
                 LastUpdatedBy = "Admin",
                 LastInteractionDate = DateTime.UtcNow
             };
+    }
+
+    private void RefreshPage()
+    {
+        _nav.NavigateTo("/cus01", forceLoad: true);
     }
 }

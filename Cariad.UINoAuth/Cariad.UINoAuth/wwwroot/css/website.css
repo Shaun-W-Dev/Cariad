@@ -212,11 +212,16 @@ ul {
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
+.button-primary:visited {
+  color: white;
+}
 .button-primary:hover {
   background-color: #002e25;
+  color: white;
 }
 .button-primary:active {
   background-color: #001510;
+  color: white;
 }
 .button-primary:disabled {
   background-color: gray;
@@ -237,11 +242,16 @@ ul {
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
+.button-secondary:visited {
+  color: #3D434E;
+}
 .button-secondary:hover {
   background-color: #e7dfd3;
+  color: #3D434E;
 }
 .button-secondary:active {
   background-color: #ded3c3;
+  color: #3D434E;
 }
 .button-secondary:disabled {
   background-color: gray;
@@ -413,6 +423,7 @@ h1:focus-visible, h2:focus-visible, h3:focus-visible, h4:focus-visible, h5:focus
 }
 .banner h1 {
   color: #E5E44A;
+  margin-bottom: 0;
 }
 
 #copycat {
