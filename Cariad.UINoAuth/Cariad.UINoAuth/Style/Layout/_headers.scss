@@ -1,0 +1,26 @@
+﻿@import '../Utilities/_variables.scss';
+
+h1, h2, h3, h4, h5{
+    &:focus-visible{outline:none !important;}
+
+}
+
+.banner {
+    background-color: $green;
+    padding:30px 0;
+    margin-bottom:50px;
+
+    h1 {
+        color: $lime;
+    }
+}
+
+#copycat {
+    background-color: $white;
+    border-bottom: solid 1px $light-grey;
+    margin-bottom: 50px;
+    position: fixed;
+    transition: all .3s;
+    width: 100%;
+    z-index: 200;
+}

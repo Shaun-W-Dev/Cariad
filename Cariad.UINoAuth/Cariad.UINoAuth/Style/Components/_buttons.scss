@@ -1,0 +1,11 @@
+﻿@import '../Utilities/_variables.scss';
+@import '../Utilities/_mixins.scss';
+
+
+.button-primary {
+    @include button($green, $white);
+}
+
+.button-secondary {
+    @include button($cream, $dark-grey);
+}

@@ -1,0 +1,400 @@
+﻿@inject NavigationManager _nav
+@page "/cus01"
+
+<PageTitle>Cariad | CUS01 - Customer Details</PageTitle>
+
+<ScreenHeading PageTitle="CUS01 - Customer Details"></ScreenHeading>
+<div class="container">
+
+    <EditForm Model="_customerDetails" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="row pb-5">
+            <div class="col">
+                <div class="form form-group">
+                    <h2>Basic Details</h2>
+                    <div class="grid-5">
+                        <div class="item">
+                            <label for="CustomerNumber">Customer number:</label>
+                            <InputText id="CustomerNumber" @bind-Value="_customerDetails.CustomerNumber" />
+                        </div>
+                        <div class="item">
+                            <label for="Title">Title:</label>
+                            <InputText id="Title" @bind-Value="_customerDetails.Title" />
+                        </div>
+                        <div class="item">
+                            <label for="Initials">Initials:</label>
+                            <InputText id="Initials" @bind-Value="_customerDetails.Initials" />
+                        </div>
+                        <div class="item">
+                            <label for="DateOfBirth">Date of birth:</label>
+                            <InputText id="DateOfBirth" @bind-Value="_customerDetails.DateOfBirth" />
+                        </div>
+                        <div class="item">
+                            <label for="DateOfDeath">Date of death:</label>
+                            <InputText id="DateOfDeath" @bind-Value="_customerDetails.DateOfDeath" />
+                        </div>
+                    </div>
+                    <div class="grid-6">
+                        <div class="item">
+                            <label for="IsPbsEmpoloyee">PBS Employee:</label>
+                            <InputCheckbox id="IsPbsEmpoloyee" @bind-Value="_customerDetails.IsPbsEmpoloyee" />
+                        </div>
+                        <div class="item">
+                            <label for="Forename">Forename:</label>
+                            <InputText id="Forename" @bind-Value="_customerDetails.Forename" />
+                        </div>
+                        <div class="item">
+                            <label for="Surname">Surname:</label>
+                            <InputText id="Surname" @bind-Value="_customerDetails.Surname" />
+                        </div>
+                        <div class="item">
+                            <label for="Nationality">Nationality:</label>
+                            <InputText id="Nationality" @bind-Value="_customerDetails.Nationality" />
+                        </div>
+                        <div class="item">
+                            <label for="Occupation">Occupation:</label>
+                            <InputText id="Occupation" @bind-Value="_customerDetails.Occupation" />
+                        </div>
+                        <div class="item">
+                            <label for="OccupationStatus">Occupation Status:</label>
+                            <InputText id="OccupationStatus" @bind-Value="_customerDetails.OccupationStatus" />
+                        </div>
+                    </div>
+                    <div class="grid-5">
+                        <div class="item">
+                            <label for="SexStatus">Sex/Status:</label>
+                            <InputText id="SexStatus" @bind-Value="_customerDetails.SexStatus" />
+                        </div>
+                        <div class="item">
+                            <label for="NationalInsuranceNumber">National Insurance Number:</label>
+                            <InputText id="NationalInsuranceNumber" @bind-Value="_customerDetails.NationalInsuranceNumber" />
+                        </div>
+                        <div class="item">
+                            <label for="MaritalStatus">Marital Status:</label>
+                            <InputText id="MaritalStatus" @bind-Value="_customerDetails.MaritalStatus" />
+                        </div>
+                        <div class="item">
+                            <label for="Source">Source:</label>
+                            <InputText id="Source" @bind-Value="_customerDetails.Source" />
+                        </div>
+                        <div class="item">
+                            <label for="Company">Company:</label>
+                            <InputText id="Company" @bind-Value="_customerDetails.Company" />
+                        </div>
+                    </div>
+                    <div class="grid-5">
+                        <div class="item">
+                            <label for="CharityNumber">Charity Number:</label>
+                            <InputText id="CharityNumber" @bind-Value="_customerDetails.CharityNumber" />
+                        </div>
+                        <div class="item">
+                            <label for="DeliveryChannel">Delivery Channel:</label>
+                            <InputText id="DeliveryChannel" @bind-Value="_customerDetails.DeliveryChannel" />
+                        </div>
+                        <div class="item">
+                            <label for="AccountOpeningDate">Account Opening Date:</label>
+                            <InputDate id="AccountOpeningDate" @bind-Value="_customerDetails.AccountOpeningDate" />
+                        </div>
+                        <div class="item">
+                            <label for="CharitableAssignement">Charitable Assignement:</label>
+                            <InputText id="CharitableAssignement" @bind-Value="_customerDetails.CharitableAssignement" />
+                        </div>
+                        <div class="item">
+                            <label for="MembershipLength">Membership Length:</label>
+                            <InputText id="MembershipLength" @bind-Value="_customerDetails.MembershipLength" />
+                        </div>
+                    </div>
+                    <div class="grid-3">
+                        <div class="item">
+                            <label for="CountryOfBirth">Country Of Birth:</label>
+                            <InputText id="CountryOfBirth" @bind-Value="_customerDetails.CountryOfBirth" />
+                        </div>
+                        <div class="item">
+                            <label for="LastUpdated">Last Updated Birth City/Town:</label>
+                            <InputDate id="LastUpdated" @bind-Value="_customerDetails.LastUpdated" />
+                        </div>
+                        <div class="item">
+                            <label for="ResidenceCountryCode">Residence Country Code:</label>
+                            <InputText id="ResidenceCountryCode" @bind-Value="_customerDetails.ResidenceCountryCode" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pb-5">
+            <div class="col">
+                <div class="form form-group">
+                    <h2>Contact Details</h2>
+                    <div class="grid-5">
+                        <div class="item">
+                            <label for="Street">Street:</label>
+                            <InputText id="Street" @bind-Value="_customerDetails.Street" />
+                        </div>
+                        <div class="item">
+                            <label for="District">District:</label>
+                            <InputText id="District" @bind-Value="_customerDetails.District" />
+                        </div>
+                        <div class="item">
+                            <label for="Town">Town:</label>
+                            <InputText id="Town" @bind-Value="_customerDetails.Town" />
+                        </div>
+                        <div class="item">
+                            <label for="County">County:</label>
+                            <InputText id="County" @bind-Value="_customerDetails.County" />
+                        </div>
+                        <div class="item">
+                            <label for="Postcode">Postcode:</label>
+                            <InputText id="Postcode" @bind-Value="_customerDetails.Postcode" />
+                        </div>
+                    </div>
+                    <div class="grid-6">
+                        <div class="item">
+                            <label for="HomeTelephoneNumber">Home Telephone Number:</label>
+                            <InputText id="HomeTelephoneNumber" @bind-Value="_customerDetails.HomeTelephoneNumber" />
+                        </div>
+                        <div class="item">
+                            <label for="MobileTelephoneNumber">Mobile Telephone Number:</label>
+                            <InputText id="MobileTelephoneNumber" @bind-Value="_customerDetails.MobileTelephoneNumber" />
+                        </div>
+                        <div class="item">
+                            <label for="WorkTelephoneNumber">Work Telephone Number:</label>
+                            <InputText id="WorkTelephoneNumber" @bind-Value="_customerDetails.WorkTelephoneNumber" />
+                        </div>
+                        <div class="item">
+                            <label for="Fax">Fax:</label>
+                            <InputText id="Fax" @bind-Value="_customerDetails.Fax" />
+                        </div>
+                        <div class="item">
+                            <label for="EmailAddress">Email Address:</label>
+                            <InputText id="EmailAddress" @bind-Value="_customerDetails.EmailAddress" />
+                        </div>
+                        <div class="item">
+                            <label for="MobileAuthorisationDate">Mobile Authorisation Date:</label>
+                            <InputText id="MobileAuthorisationDate" @bind-Value="_customerDetails.MobileAuthorisationDate" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pb-5">
+            <div class="col">
+                <div class="form form-group">
+                    <h2>Preferences</h2>
+                    <div class="grid-6">
+                        <div class="item">
+                            <label for="HasForeignAddress">Foreign Address:</label>
+                            <InputSelect id="HasForeignAddress" @bind-Value="_customerDetails.HasForeignAddress">
+                                <option value="True">Yes</option>
+                                <option value="False">No</option>
+                            </InputSelect>
+                        </div>
+                        <div class="item">
+                            <label for="IsAddressKnown">Unknown Address:</label>
+                            <InputSelect id="IsAddressKnown" @bind-Value="_customerDetails.IsAddressKnown">
+                                <option value="True">Yes</option>
+                                <option value="False">No</option>
+                            </InputSelect>
+                        </div>
+                        <div class="item">
+                            <label for="HasMailshotsAllowed">Are Mailshots Allowed:</label>
+                            <InputSelect id="HasMailshotsAllowed" @bind-Value="_customerDetails.HasMailshotsAllowed">
+                                <option value="True">Yes</option>
+                                <option value="False">No</option>
+                            </InputSelect>
+                        </div>
+                        <div class="item">
+                            <label for="HasWelshMailshows">Welsh Mailshots:</label>
+                            <InputSelect id="HasWelshMailshows" @bind-Value="_customerDetails.HasWelshMailshows">
+                                <option value="True">Yes</option>
+                                <option value="False">No</option>
+                            </InputSelect>
+                        </div>
+                        <div class="item">
+                            <label for="IsEmailsAllowed">Emails Allowed:</label>
+                            <InputSelect id="IsEmailsAllowed" @bind-Value="_customerDetails.IsEmailsAllowed">
+                                <option value="True">Yes</option>
+                                <option value="False">No</option>
+                            </InputSelect>
+                        </div>
+                        <div class="item">
+                            <label for="IsTelephoneAllowed">Telephone Allowed:</label>
+                            <InputSelect id="IsTelephoneAllowed" @bind-Value="_customerDetails.IsTelephoneAllowed">
+                                <option value="True">Yes</option>
+                                <option value="False">No</option>
+                            </InputSelect>
+                        </div>
+                    </div>
+                    <div class="grid-5">
+                        <div class="item">
+                            <label for="IsSmsAllowed">SMS Allowed:</label>
+                            <InputSelect id="IsSmsAllowed" @bind-Value="_customerDetails.IsSmsAllowed">
+                                <option value="True">Yes</option>
+                                <option value="False">No</option>
+                            </InputSelect>
+                        </div>
+                        <div class="item">
+                            <label for="HasMembersRewards">Members Rewards:</label>
+                            <InputSelect id="HasMembersRewards" @bind-Value="_customerDetails.HasMembersRewards">
+                                <option value="True">Yes</option>
+                                <option value="False">No</option>
+                            </InputSelect>
+                        </div>
+                        <div class="item">
+                            <label for="IsMarketingPreferencesUpToDate">Refresh Marketing Preferences:</label>
+                            <InputSelect id="IsMarketingPreferencesUpToDate" @bind-Value="_customerDetails.IsMarketingPreferencesUpToDate">
+                                <option value="True">Yes</option>
+                                <option value="False">No</option>
+                            </InputSelect>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pb-5">
+            <div class="col">
+                <div class="form form-group">
+                    <h2>TIN Details</h2>
+                    <div class="grid-2">
+                        <div class="item">
+                            <label for="IsTaxResidentOutsideUK">Tax Resident other than UK:</label>
+                            <InputSelect id="IsTaxResidentOutsideUK" @bind-Value="_customerDetails.IsTaxResidentOutsideUK">
+                                <option value="True">Yes</option>
+                                <option value="False">No</option>
+                            </InputSelect>
+                        </div>
+                        <div class="item">
+                            <label for="IsAUSCitizen">Citizen of the USA:</label>
+                            <InputSelect id="IsAUSCitizen" @bind-Value="_customerDetails.IsAUSCitizen">
+                                <option value="True">Yes</option>
+                                <option value="False">No</option>
+                            </InputSelect>
+                        </div>
+                    </div>
+                    <div class="grid-2">
+                        <div class="item">
+                            <label><b>Tax Residency</b></label>
+                            <InputSelect id="TaxResidencyCountry1" @bind-Value="_customerDetails.TaxResidencyCountry1">
+                                <option value="True">Yes</option>
+                                <option value="False">No</option>
+                            </InputSelect>
+                        </div>
+                        <div class="item">
+                            <label><b>Tin Number</b></label>
+                            <InputText id="TinNumber1" @bind-Value="_customerDetails.TinNumber1" />
+                        </div>
+                        <div class="item">
+                            <InputSelect id="TaxResidencyCountry2" @bind-Value="_customerDetails.TaxResidencyCountry2">
+                                <option value="True">Yes</option>
+                                <option value="False">No</option>
+                            </InputSelect>
+                        </div>
+                        <div class="item">
+                            <InputText id="TinNumber2" @bind-Value="_customerDetails.TinNumber2" />
+                        </div>
+                        <div class="item">
+                            <InputSelect id="TaxResidencyCountry3" @bind-Value="_customerDetails.TaxResidencyCountry3">
+                                <option value="True">Yes</option>
+                                <option value="False">No</option>
+                            </InputSelect>
+                        </div>
+                        <div class="item">
+                            <InputText id="TinNumber3" @bind-Value="_customerDetails.TinNumber3" />
+                        </div>
+                    </div>
+                    <div class="grid-4">
+                        <div class="item">
+                            <label for="DateCreated">Date Created:</label>
+                            <InputDate id="DateCreated" @bind-Value="_customerDetails.DateCreated" enabled="false" />
+                        </div>
+                        <div class="item">
+                            <label for="CreatedBy">Created By:</label>
+                            <InputText id="CreatedBy" @bind-Value="_customerDetails.CreatedBy" enabled="false" />
+                        </div>
+                        <div class="item">
+                            <label for="LastUpdatedBy">Last Updated By:</label>
+                            <InputText id="LastUpdatedBy" @bind-Value="_customerDetails.LastUpdatedBy" enabled="false" />
+                        </div>
+                        <div class="item">
+                            <label for="LastInteractionDate">Last Interaction Date:</label>
+                            <InputDate id="LastInteractionDate" @bind-Value="_customerDetails.LastInteractionDate" enabled="false" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pb-5">
+            <div class="col">
+                <div class="form form-group">
+                    <h2>Identification Details</h2>
+                    <div class="grid-4">
+                        <div class="item">
+                            <label for="IdName1">1st Name ID:</label>
+                            <InputSelect id="IdName1" @bind-Value="_customerDetails.IdName1">
+                                <option value="True">Yes</option>
+                                <option value="False">No</option>
+                            </InputSelect>
+                        </div>
+                        <div class="item">
+                            <label for="IdName1Additional">&nbsp;</label>
+                            <InputText id="IdName1Additional" @bind-Value="_customerDetails.IdName1Additional" />
+                        </div>
+                        <div class="item">
+                            <label for="IdAddress1">1st Address ID:</label>
+                            <InputSelect id="IdAddress1" @bind-Value="_customerDetails.IdAddress1">
+                                <option value="True">Yes</option>
+                                <option value="False">No</option>
+                            </InputSelect>
+                        </div>
+                        <div class="item">
+                            <label for="IdAddress1Additional">&nbsp;</label>
+                            <InputText id="IdAddress1Additional" @bind-Value="_customerDetails.IdAddress1Additional" />
+                        </div>
+                        <div class="item">
+                            <label for="IdName2">2nd Name ID:</label>
+                            <InputSelect id="IdName2" @bind-Value="_customerDetails.IdName2">
+                                <option value="True">Yes</option>
+                                <option value="False">No</option>
+                            </InputSelect>
+                        </div>
+                        <div class="item">
+                            <label for="IdName2Additional">&nbsp;</label>
+                            <InputText id="IdName2Additional" @bind-Value="_customerDetails.IdName2Additional" />
+                        </div>
+                        <div class="item">
+                            <label for="IdAddress2">2nd Address ID:</label>
+                            <InputSelect id="IdAddress2" @bind-Value="_customerDetails.IdAddress2">
+                                <option value="True">Yes</option>
+                                <option value="False">No</option>
+                            </InputSelect>
+                        </div>
+                        <div class="item">
+                            <label for="IdAddress2Additional">&nbsp;</label>
+                            <InputText id="IdAddress2Additional" @bind-Value="_customerDetails.IdAddress2Additional" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pb-5">
+            <div class="col">
+                <div class="button-container">
+                    <button type="submit" class="button-primary">@PrimaryActionButtonText - Customer</button>
+                </div>
+            </div>
+        </div>
+    </EditForm>
+
+</div>
+
+@code {
+    public CopyCat.Core.DTOs.Cus01 _customerDetails = new Core.DTOs.Cus01();
+    public StringBuilder _customErrorHandler = new StringBuilder();
+    public string PrimaryActionButtonText { get; set; } = "Create";
+
+    private async Task HandleValidSubmit()
+    {
+
+    }
+}

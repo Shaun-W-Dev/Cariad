@@ -1,0 +1,33 @@
+﻿/* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import '../Utilities/_mixins.scss';
+@import '../Utilities/_variables.scss';
+
+a {
+    @include link-states($dark-grey, $green);
+}
+
+h1, h2, h3, h4, h5{
+    font-weight:bold;
+    margin-bottom:1rem;
+}
+
+.font-size-small{
+    font-size:$font-size-small !important;
+}
+
+.font-size-base {
+    font-size: $font-size-base !important;
+}
+
+.font-size-large {
+    font-size: $font-size-large !important;
+}
+
+.font-size-extra-large {
+    font-size: $font-size-extra-large !important;
+}
+
+ul {
+    list-style: none;
+}

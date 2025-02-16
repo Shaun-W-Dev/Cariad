@@ -1,0 +1,115 @@
+﻿@page "/all-screens"
+@inject ICaresScreensService _caresScreenService;
+
+<PageTitle>CopyCat | All Screens</PageTitle>
+<ScreenHeading PageTitle="All Screens"></ScreenHeading>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="grid-2">
+                @if (_pages.Any())
+                {
+                    <div class="item">
+                        <h5>Customer</h5>
+                        @foreach (var screen in _pages.Where(p => p.Category == "Customer"))
+                        {
+                            <p>
+                                <a href="@screen.Slug">@screen.Code - @screen.Title</a>
+                            </p>
+                        }
+                    </div>
+                    <div class="item">
+                        <h5>Savings</h5>
+                        @foreach (var screen in _pages.Where(p => p.Category == "Savings"))
+                        {
+                            <p>
+                                <a href="@screen.Slug">@screen.Code - @screen.Title</a>
+                            </p>
+                        }
+                    </div>
+                    <div class="item">
+                        <h5>Mortgage Enquiries</h5>
+                        @foreach (var screen in _pages.Where(p => p.Category == "Mortgage Enquiries"))
+                        {
+                            <p>
+                                <a href="@screen.Slug">@screen.Code - @screen.Title</a>
+                            </p>
+                        }
+                    </div>
+                    <div class="item">
+                        <h5>Mortgage Applications</h5>
+                        @foreach (var screen in _pages.Where(p => p.Category == "Mortgage Applications"))
+                        {
+                            <p>
+                                <a href="@screen.Slug">@screen.Code - @screen.Title</a>
+                            </p>
+                        }
+                    </div>
+                    <div class="item">
+                        <h5>Sole/Joint</h5>
+                        @foreach (var screen in _pages.Where(p => p.Category == "Sole/Joint"))
+                        {
+                            <p>
+                                <a href="@screen.Slug">@screen.Code - @screen.Title</a>
+                            </p>
+                        }
+                    </div>
+                    <div class="item">
+                        <h5>Restrictions</h5>
+                        @foreach (var screen in _pages.Where(p => p.Category == "Restrictions"))
+                        {
+                            <p>
+                                <a href="@screen.Slug">@screen.Code - @screen.Title</a>
+                            </p>
+                        }
+                    </div>
+                    <div class="item">
+                        <h5>Tax Certificate</h5>
+                        @foreach (var screen in _pages.Where(p => p.Category == "Tax Certificate"))
+                        {
+                            <p>
+                                <a href="@screen.Slug">@screen.Code - @screen.Title</a>
+                            </p>
+                        }
+                    </div>
+                    <div class="item">
+                        <h5>Deceased / Power of Attorney</h5>
+                        @foreach (var screen in _pages.Where(p => p.Category == "Deceased / Power of Attorney"))
+                        {
+                            <p>
+                                <a href="@screen.Slug">@screen.Code - @screen.Title</a>
+                            </p>
+                        }
+                    </div>
+                    <div class="item">
+                        <h5>Lost Passbooks</h5>
+                        @foreach (var screen in _pages.Where(p => p.Category == "Lost Passbooks"))
+                        {
+                            <p>
+                                <a href="@screen.Slug">@screen.Code - @screen.Title</a>
+                            </p>
+                        }
+                    </div>
+                    <div class="item">
+                        <h5>Cashier Screens</h5>
+                        @foreach (var screen in _pages.Where(p => p.Category == "Cashier Screens"))
+                        {
+                            <p>
+                                <a href="@screen.Slug">@screen.Code - @screen.Title</a>
+                            </p>
+                        }
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private IEnumerable<CaresScreenModel> _pages;
+    protected override async Task OnInitializedAsync()
+    {
+        _pages = await _caresScreenService.GetCaresScreensAsync();
+    }
+}

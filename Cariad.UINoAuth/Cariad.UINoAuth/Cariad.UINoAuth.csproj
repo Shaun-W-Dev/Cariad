@@ -1,10 +1,25 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
   <ItemGroup>
+    <Compile Remove="obj\**" />
+    <Content Remove="obj\**" />
+    <EmbeddedResource Remove="obj\**" />
+    <None Remove="obj\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Cariad.Application\Cariad.Application.csproj" />
+    <ProjectReference Include="..\..\Cariad.Infrastructure\Cariad.Infrastructure.csproj" />
     <ProjectReference Include="..\Cariad.UINoAuth.Client\Cariad.UINoAuth.Client.csproj" />
+    <PackageReference Include="BuildBundlerMinifier" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" />
 	<PackageReference Include="Serilog" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Components\Pages\Customers\" />
+    <Folder Include="Components\Shared\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
   </ItemGroup>
 </Project>

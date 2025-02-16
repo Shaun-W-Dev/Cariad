@@ -1,0 +1,87 @@
+﻿@import '../Utilities/_variables.scss';
+@import '../Utilities/_mixins.scss';
+
+.form-group {
+    background: $white;
+    border-radius: 16px;
+    padding: 25px;
+
+    h2 {
+        border-bottom: solid 1px $light-grey;
+        font-size: $font-size-base;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        padding-bottom:1rem;
+    }
+
+    label {
+        display: block;
+        font-size: $font-size-small;
+        font-weight: 500;
+        padding-bottom:8px;
+        opacity:0.8;
+    }
+
+    input, select, textarea {
+        border-radius: 8px;
+        border: solid 1px $light-grey;
+        display: block;
+        font-size: $font-size-small;
+        margin-bottom:32px;
+        padding: 8px 16px;
+        width: 100%;
+        @include transition;
+
+        &:focus-visible {
+            outline: solid 1px $dark-grey;
+            @include transition;
+        }
+    }
+}
+
+.login {
+    max-height: 100vh;
+    overflow: hidden;
+
+    .pbs {
+        .main {
+            block-size: 100vh;
+            padding: 10%;
+            @include flex(column, center, center);
+
+            .button-container {
+                min-width: 330px;
+                padding: 25px;
+            }
+
+            .form {
+                min-width: 300px;
+
+                label {
+                    float: inline-start;
+                }
+            }
+
+            h1 {
+                font-size: 4rem;
+                font-weight: bold;
+                margin: 0;
+            }
+
+            h2 {
+                font-size: $hero-size-sub;
+                margin: 0;
+                padding: 20px 0;
+            }
+
+            img {
+                min-height: unset;
+            }
+        }
+
+        img {
+            object-fit: cover;
+            min-height: 100%;
+        }
+    }
+}

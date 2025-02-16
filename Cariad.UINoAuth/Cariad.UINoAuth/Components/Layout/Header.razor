@@ -1,0 +1,152 @@
+﻿@using Cariad.Application.Interfaces
+@inject IJSRuntime _jsRuntime
+@inject ICaresScreensService _caresScreenService
+
+@if (_pages is not null)
+{
+    <header id="copycat" aria-label="navigation bar" class="pbs" aria-sticky="false">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <div class="navigation-container">
+                        <div class="nav-start">
+                            <a class="logo" href="/">
+                                <img src="images/principality-logo-icon.png" alt="Principality Logo" />
+                            </a>
+                            <nav class="menu">
+                                <ul class="menu-bar">
+                                    <li>
+                                        <button class="nav-link dropdown-btn" data-dropdown="dropdown1" aria-haspopup="true" aria-expanded="false" aria-label="browse">
+                                            Customers
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="down-arrow" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+                                            </svg>
+                                        </button>
+                                        <div id="dropdown1" class="dropdown ">
+                                            <ul role="menu">
+                                                @foreach (var item in _pages.Where(p => p.Category == "Customer"))
+                                                {
+                                                    <li role="menuitem">
+                                                        <a class="dropdown-link" href="@item.Slug">@item.Code - @item.Title</a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <button class="nav-link dropdown-btn" data-dropdown="dropdown2" aria-haspopup="true" aria-expanded="false" aria-label="discover">
+                                            Savings
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="down-arrow" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+                                            </svg>
+                                        </button>
+                                        <div id="dropdown2" class="dropdown">
+                                            <ul role="menu">
+                                                @foreach (var item in _pages.Where(p => p.Category == "Savings"))
+                                                {
+                                                    <li role="menuitem">
+                                                        <a class="dropdown-link" href="@item.Slug">@item.Code - @item.Title</a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="double-pane">
+                                        <button class="nav-link dropdown-btn" data-dropdown="dropdown3" aria-haspopup="true" aria-expanded="false" aria-label="discover">
+                                            Mortgages
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="down-arrow" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+                                            </svg>
+                                        </button>
+                                        <div id="dropdown3" class="dropdown">
+                                            <ul role="menu">
+                                                <li>
+                                                    <span class="dropdown-link-title">Mortgage Enquiries</span>
+                                                </li>
+                                                @foreach (var item in _pages.Where(p => p.Category == "Mortgage Enquiries"))
+                                                {
+                                                    <li role="menuitem">
+                                                        <a class="dropdown-link" href="@item.Slug">@item.Code - @item.Title</a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                            <ul role="menu">
+                                                <li>
+                                                    <span class="dropdown-link-title">Mortgage Applications</span>
+                                                </li>
+                                                @foreach (var item in _pages.Where(p => p.Category == "Mortgage Applications"))
+                                                {
+                                                    <li role="menuitem">
+                                                        <a class="dropdown-link" href="@item.Slug">@item.Code - @item.Title</a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link" href="all-screens">All Screens</a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link" href="cus-01">All Screens</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                        <div class="nav-end">
+                            <div class="right-container">
+                                <form class="search" role="search">
+                                    <input type="search" name="search" placeholder="Search pages" list="screens" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                                    </svg>
+                                </form>
+                                <p class="m-0">
+                                    Croeso nol Shaun
+                                </p>
+                            </div>
+
+                            <button id="hamburger" aria-label="hamburger" aria-haspopup="true" aria-expanded="false">
+                                <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                                    <path stroke-width="2" d="M4 8 L26 8"></path>
+                                    <path stroke-width="2" d="M4 15 L26 15"></path>
+                                    <path stroke-width="2" d="M4 22 L26 22"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <datalist id="screens">
+        @foreach (var optionsListItem in _pages)
+        {
+            <option value="@optionsListItem.Code - @optionsListItem.Title"></option>
+        }
+    </datalist>
+
+}
+
+
+@code {
+    private IEnumerable<CaresScreenModel> _pages;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _pages = await _caresScreenService.GetCaresScreensAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        // if (firstRender)
+        // {
+        //     await _jsRuntime.InvokeVoidAsync("initializeDropdowns");
+        // }
+
+        await _jsRuntime.InvokeVoidAsync("alert", "JS Interop is working!");
+
+    }
+}

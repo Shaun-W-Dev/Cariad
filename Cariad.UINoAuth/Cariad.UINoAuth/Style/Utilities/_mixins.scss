@@ -1,0 +1,84 @@
+﻿@mixin button($bg-color, $text-color, $padding: 10px 20px, $border-radius: 5px) {
+    display: inline-block;
+    background-color: $bg-color;
+    color: $text-color;
+    padding: $padding;
+    border-radius: $border-radius;
+    border: none;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+        background-color: darken($bg-color, 10%);
+    }
+
+    &:active {
+        background-color: darken($bg-color, 15%);
+    }
+
+    &:disabled {
+        background-color: gray;
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+}
+
+
+@mixin grid($gap, $columns, $rows, $content) {
+    display: grid;
+    gap: $gap;
+    grid-auto-flow: row;
+    grid-template-columns: $columns;
+    grid-template-rows: $rows;
+    place-content: $content;
+}
+
+@mixin grid-row-span($numberOfRows) {
+    grid-row: span 2;
+}
+
+@mixin flex($direction, $align, $justify) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
+}
+
+@mixin flex-center($direction: row, $align: center, $justify: center) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
+}
+
+@mixin link-states($color: #007bff, $interaction-color: darken($color, 10%)) {
+    color: $color;
+    text-decoration: none;
+    @include transition;
+
+    &:visited {
+        color: $color;
+    }
+
+    &:hover, &:active, &:focus {
+        color: $interaction-color;
+        outline: none;
+    }
+}
+
+@mixin subgrid-active($rows) {
+    .subgrid-active {
+        .item {
+            display: grid;
+            grid-template-rows: subgrid;
+            grid-row: span $rows;
+        }
+    }
+}
+
+@mixin transition($transition-properties: all, $duration: 0.1s, $ease: ease-in-out) {
+    transition: $transition-properties $duration $ease;
+}

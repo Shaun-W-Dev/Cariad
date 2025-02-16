@@ -1,13 +1,21 @@
+global using Cariad.Domain.Models;
 using Cariad.UINoAuth.Components;
+using Cariad.Application.Interfaces;
+using Cariad.Application.Services;
+using Cariad.Infrastructure.Repositories;
 
-WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 
-WebApplication app = builder.Build();
+builder.Services.AddSingleton<ICaresScreensService, CaresScreenService>();
+builder.Services.AddSingleton<ICaresScreensRepository, CaresScreenRepo>();
+
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -22,14 +30,11 @@ else
 }
 
 app.UseHttpsRedirection();
-
-
 app.UseAntiforgery();
-
 app.MapStaticAssets();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()
     .AddAdditionalAssemblies(typeof(Cariad.UINoAuth.Client._Imports).Assembly);
 
-app.Run();
+await app.RunAsync();

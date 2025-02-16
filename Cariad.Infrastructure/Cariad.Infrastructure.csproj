@@ -2,5 +2,6 @@
   <ItemGroup>
     <Folder Include="Identity\" />
     <Folder Include="Repositories\" />
+	<ProjectReference Include="..\Cariad.Application\Cariad.Application.csproj" />
   </ItemGroup>
 </Project>

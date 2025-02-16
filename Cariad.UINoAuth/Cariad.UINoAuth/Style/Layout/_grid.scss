@@ -1,0 +1,26 @@
+﻿@import '../Utilities/_variables.scss';
+@import '../Utilities/_mixins.scss';
+
+.grid-2 {
+    @include grid(15px, 1fr 1fr, 1fr, center);
+}
+
+.grid-3 {
+    @include grid(15px, 1fr 1fr 1fr, 1fr, center);
+}
+
+.grid-4 {
+    @include grid(15px, 1fr 1fr 1fr 1fr, 1fr, center);
+
+    @media(max-width: $screen-breakpoint-lg) {
+        @include grid(15px, 1fr 1fr, 1fr 1fr, center);
+    }
+}
+
+.grid-5 {
+    @include grid(15px, 1fr 1fr 1fr 1fr 1fr, 1fr, center);
+}
+
+.grid-6 {
+    @include grid(15px, 1fr 1fr 1fr 1fr 1fr 1fr, 1fr, center);
+}

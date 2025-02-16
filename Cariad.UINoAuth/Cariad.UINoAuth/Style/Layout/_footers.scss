@@ -1,0 +1,14 @@
+﻿@import '../Utilities/_variables.scss';
+@import '../Utilities/_mixins.scss';
+
+.footer {
+    a {@include link-states($dark-grey, $green);}
+    h5 {font-weight: bold;}
+
+    bottom: 0;
+    font-size: $font-size-base;
+    line-height: 60px;
+    position: relative;
+    white-space: nowrap;
+    width: 100%;
+}
