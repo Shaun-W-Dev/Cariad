@@ -6,7 +6,4 @@
 	  <PackageReference Include="Microsoft.Extensions.Resilience" />
 	  <PackageReference Include="Serilog" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Options\" />
-  </ItemGroup>
 </Project>

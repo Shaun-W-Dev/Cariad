@@ -1,4 +1,6 @@
+using Cariad.API.Options;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 namespace Cariad.API.Controllers;
 
@@ -6,10 +8,12 @@ namespace Cariad.API.Controllers;
 [Route("api/[controller]")]
 public class WeatherForecastController : ControllerBase
 {
-    private string[] Summaries = new[]
+    private readonly ApiSettingsOptions _apiSettings;
+
+    public WeatherForecastController(IOptions<ApiSettingsOptions> options)
     {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+        _apiSettings = options.Value;
+    }
 
     [HttpGet(Name = "GetWeatherForecast")]
     public IEnumerable<WeatherForecast> Get()
@@ -18,7 +22,7 @@ public class WeatherForecastController : ControllerBase
         {
             Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
             TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+            Summary = _apiSettings.ClientId
         })
         .ToArray();
     }
