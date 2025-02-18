@@ -11,7 +11,7 @@ namespace Cariad.Infrastructure.Repositories
             {
                 new() { ActionId = 1, Author = "shaun.weston@principality.co.uk", Title = "Call back", Description = "Call Mr Smith about new savings account", Status = "Active", Created = DateTime.Now },
                 new() { ActionId = 2, Author = "shaun.weston@principality.co.uk", Title = "Service Now Ticket", Description = "Call Sue Denim about technical issue resolution", Status = "Pending", Created = DateTime.Now },
-                new() { ActionId = 3, Author = "shaun.weston@principality.co.uk", Title = "Log complaint", Description = "Log complaint for Mr. Grumps", Status = "Closed", Created = DateTime.Now },
+                new() { ActionId = 3, Author = "shaun.weston@principality.co.uk", Title = "Log complaint", Description = "Log complaint for Mr. Burns", Status = "Closed", Created = DateTime.Now },
             });
         }
     }
