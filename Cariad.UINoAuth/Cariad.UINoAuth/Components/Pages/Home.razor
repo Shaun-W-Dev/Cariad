@@ -13,12 +13,11 @@
                 <a href="/cus01" class="button-primary">Create new customer</a>
             </div>
             <div class="col">
-                <a href="#" class="button-secondary">Useful button</a>
+                <a href="#" class="button-secondary">Search Customer</a>
             </div>
         </div>
         <div class="row">
             <div class="col pt-4">
-
                 <div class="form form-group">
                     <h2 class="fw-bold">Actions</h2>
 
@@ -34,56 +33,27 @@
                     }
                     else
                     {
-                        @foreach (var action in _actions)
-                        {
-                            <div class="row">
-                                <div class="col">
-                                    <p>
-                                        @action.Title
-                                    </p>
-                                </div>
-                                <div class="col">
-                                    <p>
-                                        @action.Description
-                                    </p>
-                                </div>
-                                <div class="col-1">
-                                    @if (action.Status == "Active")
-                                    {
-                                        <p class="rounded-pill bg-success text-white d-inline p-2">
-                                            @action.Status
-                                        </p>
-                                    }
-                                    else @if (action.Status == "Pending")
-                                    {
-                                        <p class="rounded-pill bg-info text-white d-inline p-2">
-                                            @action.Status
-                                        </p>
-                                    }
-                                    else
-                                    {
-                                        <p class="rounded-pill bg-danger text-white d-inline p-2">
-                                            @action.Status
-                                        </p>
-                                    }
-                                </div>
-                                <div class="col">
-                                    <p>
-                                        @action.Created
-                                    </p>
-                                </div>
-                                <div class="col">
-                                    <p>
-                                        <a href="#" class="small button-primary">
-                                            Edit
-                                        </a>
-                                        <a href="#" class="small button-primary">
-                                            Complete
-                                        </a>
-                                    </p>
-                                </div>
+                        <div class="row">
+                            <div class="col">
+                                <a href="#">view all</a>
                             </div>
-                        }
+                        </div>
+                        <MudDataGrid Items="@_actions" Filterable="false" SortMode="@SortMode.None" Groupable="false">
+                            <Columns>
+                                <PropertyColumn Property="x => x.Title" />
+                                <PropertyColumn Property="x => x.Description" />
+                                <PropertyColumn Property="x => x.Author"/>
+                                <PropertyColumn Property="x => x.Created"/>
+                                <TemplateColumn CellClass="d-flex justify-end">
+                                    <CellTemplate>
+                                        <MudStack Row>
+                                            <button type="button" class="button-secondary">Edit</button>
+                                            <button type="button" class="button-primary">Complete</button>
+                                        </MudStack>
+                                    </CellTemplate>
+                                </TemplateColumn>
+                            </Columns>
+                        </MudDataGrid>
                     }
                 </div>
             </div>

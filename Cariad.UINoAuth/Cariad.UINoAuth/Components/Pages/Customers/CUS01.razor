@@ -1,4 +1,5 @@
 ﻿@inject NavigationManager _nav
+@inject IDialogService DialogService
 @page "/cus01"
 @rendermode InteractiveServer
 
@@ -417,10 +418,20 @@
     private Cariad.Domain.DTOs.Customer.Cus01 _customerDetails = new Domain.DTOs.Customer.Cus01();
     public string PrimaryActionButtonText { get; set; } = "Create";
 
-    private async Task HandleValidSubmit()
+    private Task HandleValidSubmit()
     {
         _swapPrimaryScreenActions = true;
-        await InvokeAsync(StateHasChanged);
+
+        var parameters = new DialogParameters<CUS01Dialog>
+        {
+            { x => x.ContentTitle, "Success!" },
+            { x => x.ContentText, $"Customer record has been created successfully for {_customerDetails.Title} {_customerDetails.Forename} {_customerDetails.Surname}"},
+            { x => x.CustomerNumber, _customerDetails.CustomerNumber },
+        };
+
+        var options = new DialogOptions { CloseOnEscapeKey = true, BackdropClick = false, MaxWidth = MaxWidth.Medium };
+
+        return DialogService.ShowAsync<CUS01Dialog>("Simple Dialog", parameters, options);
     }
 
     private async Task PopulateCustomerDetails()

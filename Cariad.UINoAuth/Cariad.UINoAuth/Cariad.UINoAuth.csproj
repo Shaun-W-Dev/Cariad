@@ -14,10 +14,14 @@
     <ProjectReference Include="..\Cariad.UINoAuth.Client\Cariad.UINoAuth.Client.csproj" />
     <PackageReference Include="BuildBundlerMinifier" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" />
+    <PackageReference Include="MudBlazor" />
 	<PackageReference Include="Serilog" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Components\Shared\" />
+    <Folder Include="wwwroot\lib\jquery-validation-unobtrusive\" />
+    <Folder Include="wwwroot\lib\jquery-validation\dist\" />
+    <Folder Include="wwwroot\lib\jquery\dist\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="compilerconfig.json" />

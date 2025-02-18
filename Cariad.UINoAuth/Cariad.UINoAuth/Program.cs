@@ -6,6 +6,7 @@ using Cariad.Application.Interfaces;
 using Cariad.Application.Services;
 using Cariad.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Components.Server;
+using MudBlazor.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +20,8 @@ builder.Services.Configure<CircuitOptions>(options =>
 {
     options.DetailedErrors = true;
 });
+
+builder.Services.AddMudServices();
 
 builder.Services.AddSingleton<ICaresScreensService, CaresScreenService>();
 builder.Services.AddSingleton<ICaresScreensRepository, CaresScreenRepo>();

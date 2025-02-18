@@ -1,1 +1,18 @@
-﻿
+﻿@import '../Utilities/_variables.scss';
+
+.mud-elevation-1{
+    box-shadow:none;
+}
+
+.mud-data-grid .mud-table-cell .column-header {
+    font-weight: bold;
+}
+
+.mud-table-cell {
+    border-bottom:none;
+    padding: 16px 16px 16px 0;
+}
+
+.mud-table-row {
+    border-bottom: $light-grey;
+}

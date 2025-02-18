@@ -1,0 +1,39 @@
+﻿@inject NavigationManager _nav
+<MudDialog>
+    <TitleContent>
+        <h2>
+            @ContentTitle
+        </h2>
+    </TitleContent>
+    <DialogContent>
+        <p>
+            @ContentText
+        </p>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Close</MudButton>
+        <MudButton OnClick="Submit">Add Customer Notes</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter]
+    private IMudDialogInstance MudDialog { get; set; }
+
+    [Parameter]
+    public string ContentTitle { get; set; } = "Title";
+
+    [Parameter]
+    public string ContentText { get; set; } = "Content";
+
+    [Parameter]
+    public string CustomerNumber { get; set; } = string.Empty;
+
+
+    private void Submit()
+    {
+        _nav.NavigateTo($"/add-notes?id={CustomerNumber}");
+    }
+
+    private void Cancel() => MudDialog.Cancel();
+}

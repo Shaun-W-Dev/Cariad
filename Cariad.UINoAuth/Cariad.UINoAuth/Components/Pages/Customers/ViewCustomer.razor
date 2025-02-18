@@ -61,10 +61,12 @@
 
 @code {
     private Cariad.Domain.DTOs.Customer.Cus01 _customerDetails = new Domain.DTOs.Customer.Cus01();
+    private Cariad.Domain.DTOs.Customer.NotesDto _dummyNotes = new Domain.DTOs.Customer.NotesDto();
 
     protected override void OnInitialized()
     {
         _customerDetails = SetDummyCustomer();
+
     }
 
     private Cariad.Domain.DTOs.Customer.Cus01 SetDummyCustomer()

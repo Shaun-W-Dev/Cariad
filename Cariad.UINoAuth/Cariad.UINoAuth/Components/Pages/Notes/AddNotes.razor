@@ -1,0 +1,59 @@
+﻿@inject NavigationManager _nav
+@inject ISnackbar Snackbar
+@page "/add-notes"
+@rendermode InteractiveServer
+
+<PageTitle>Cariad | Add Notes</PageTitle>
+
+<ScreenHeading PageTitle="Add Notes"></ScreenHeading>
+<div class="container">
+    <div class="row pb-5">
+        <div class="col">
+            <div class="form form-group">
+                <h2>Add new Note</h2>
+                <EditForm FormName="CreateNote" Model="_notes" OnValidSubmit="HandleValidSubmit">
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
+                    <div class="row">
+                        <div class="grid-5">
+                            <div class="item">
+                                <label for="Title">Title:</label>
+                                <InputText id="Title" @bind-Value="_notes.Title" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="item">
+                                <label for="Description">Description:</label>
+                                <InputTextArea id="Description" @bind-Value="_notes.Description" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pb-5">
+                        <div class="col">
+                            <div class="button-container">
+                                <button type="submit" class="button-primary">Add Note</button>
+                            </div>
+                        </div>
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private readonly Cariad.Domain.DTOs.Customer.NotesDto _notes = new Domain.DTOs.Customer.NotesDto();
+
+    private Task HandleValidSubmit()
+    {
+        _notes.Title = string.Empty;
+        _notes.Description = string.Empty;
+
+        StateHasChanged();
+
+        Snackbar.Add("Note added successfully", Severity.Success);
+        return Task.CompletedTask;
+    }
+}

@@ -801,3 +801,20 @@ h1:focus-visible, h2:focus-visible, h3:focus-visible, h4:focus-visible, h5:focus
   max-width: 45px;
   min-height: auto;
 }
+
+.mud-elevation-1 {
+  box-shadow: none;
+}
+
+.mud-data-grid .mud-table-cell .column-header {
+  font-weight: bold;
+}
+
+.mud-table-cell {
+  border-bottom: none;
+  padding: 16px 16px 16px 0;
+}
+
+.mud-table-row {
+  border-bottom: #eeeeee;
+}
