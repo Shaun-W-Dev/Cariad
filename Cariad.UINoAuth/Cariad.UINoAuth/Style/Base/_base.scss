@@ -19,7 +19,7 @@ body {
     font-size: $font-size-base;
 }
 
-.content-wrap {
+.body-wrap {
     padding-top: 91px;
 }
 
@@ -72,7 +72,6 @@ html {
 
 svg {
     fill: currentColor;
-    stroke: currentColor;
     color: black;
     width: 30px;
     height: 30px;

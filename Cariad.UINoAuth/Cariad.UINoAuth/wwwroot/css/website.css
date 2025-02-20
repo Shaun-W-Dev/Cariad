@@ -17,7 +17,7 @@ body {
   font-size: 1rem;
 }
 
-.content-wrap {
+.body-wrap {
   padding-top: 91px;
 }
 
@@ -67,7 +67,6 @@ html {
 
 svg {
   fill: currentColor;
-  stroke: currentColor;
   color: black;
   width: 30px;
   height: 30px;
@@ -179,6 +178,10 @@ h1, h2, h3, h4, h5 {
   margin-bottom: 1rem;
 }
 
+h2 .sub-heading {
+  font-size: 1.2rem;
+}
+
 .font-size-small {
   font-size: 0.9rem !important;
 }
@@ -283,11 +286,6 @@ ul {
   font-weight: bold;
 }
 
-.form-group {
-  background: white;
-  border-radius: 16px;
-  padding: 25px;
-}
 .form-group h2 {
   border-bottom: solid 1px #eeeeee;
   font-size: 1rem;
@@ -802,12 +800,31 @@ h1:focus-visible, h2:focus-visible, h3:focus-visible, h4:focus-visible, h5:focus
   min-height: auto;
 }
 
+.content-wrap {
+  background: white;
+  border-radius: 16px;
+  padding: 25px;
+}
+
+.mud-button {
+  text-transform: capitalize;
+}
+
 .mud-elevation-1 {
   box-shadow: none;
 }
 
 .mud-data-grid .mud-table-cell .column-header {
   font-weight: bold;
+}
+
+.mud-tab {
+  text-transform: capitalize;
+  color: #3D434E;
+}
+
+.mud-tab.mud-tab-active {
+  color: #00614E;
 }
 
 .mud-table-cell {

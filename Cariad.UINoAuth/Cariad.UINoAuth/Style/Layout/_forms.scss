@@ -2,10 +2,6 @@
 @import '../Utilities/_mixins.scss';
 
 .form-group {
-    background: $white;
-    border-radius: 16px;
-    padding: 25px;
-
     h2 {
         border-bottom: solid 1px $light-grey;
         font-size: $font-size-base;

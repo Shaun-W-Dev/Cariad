@@ -12,7 +12,8 @@
     </DialogContent>
     <DialogActions>
         <MudButton OnClick="Cancel">Close</MudButton>
-        <MudButton OnClick="Submit">Add Customer Notes</MudButton>
+        <button type="button" class="button-secondary" @onclick="Submit">Add Customer Notes</button>
+        <a href="/view-customer?id=@CustomerNumber" class="button-primary">View Customer Details</a>
     </DialogActions>
 </MudDialog>
 

@@ -1,6 +1,8 @@
 ﻿@import '../Utilities/_variables.scss';
 @import '../Utilities/_mixins.scss';
 
-.pbs {
-    
+.content-wrap {
+    background: $white;
+    border-radius: 16px;
+    padding: 25px;
 }
