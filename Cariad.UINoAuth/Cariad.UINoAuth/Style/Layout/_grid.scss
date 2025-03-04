@@ -1,6 +1,22 @@
 ﻿@import '../Utilities/_variables.scss';
 @import '../Utilities/_mixins.scss';
 
+.customer-info {
+    padding: 5px 0;
+
+    .info-item {
+        .label {
+            padding: 2px 2px 2px 0px;
+        }
+
+        .value {
+            padding: 2px 0px 2px 2px;
+        }
+    }
+}
+
+
+
 .grid-2 {
     @include grid(15px, 1fr 1fr, 1fr, center);
 }

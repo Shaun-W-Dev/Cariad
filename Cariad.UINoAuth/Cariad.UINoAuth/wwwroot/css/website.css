@@ -355,6 +355,16 @@ ul {
   min-height: 100%;
 }
 
+.customer-info {
+  padding: 5px 0;
+}
+.customer-info .info-item .label {
+  padding: 2px 2px 2px 0px;
+}
+.customer-info .info-item .value {
+  padding: 2px 0px 2px 2px;
+}
+
 .grid-2 {
   display: grid;
   gap: 15px;
@@ -804,6 +814,14 @@ h1:focus-visible, h2:focus-visible, h3:focus-visible, h4:focus-visible, h5:focus
   background: white;
   border-radius: 16px;
   padding: 25px;
+}
+
+.color-dark-gray {
+  color: #3D434E;
+}
+
+.color-light-gray {
+  color: #eeeeee;
 }
 
 .mud-button {
