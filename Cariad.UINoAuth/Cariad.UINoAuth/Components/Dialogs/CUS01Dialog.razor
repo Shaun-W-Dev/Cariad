@@ -19,7 +19,7 @@
 
 @code {
     [CascadingParameter]
-    private IMudDialogInstance MudDialog { get; set; }
+    private IMudDialogInstance? MudDialog { get; set; }
 
     [Parameter]
     public string ContentTitle { get; set; } = "Title";
@@ -36,5 +36,5 @@
         _nav.NavigateTo($"/add-notes?id={CustomerNumber}");
     }
 
-    private void Cancel() => MudDialog.Cancel();
+    private void Cancel() => MudDialog?.Cancel();
 }

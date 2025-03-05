@@ -120,6 +120,24 @@
                             <MudTabPanel Text="Secure Messages">
                                 <MudText>Content Three</MudText>
                             </MudTabPanel>
+                            <MudTabPanel Text="Notes">
+                                <MudText>
+                                    <MudTable Items="@_dummyNotes" Class="table-striped">
+                                        <HeaderContent>
+                                            <MudTh>Created</MudTh>
+                                            <MudTh>Title</MudTh>
+                                            <MudTh>Description</MudTh>
+                                            <MudTh>Author</MudTh>
+                                        </HeaderContent>
+                                        <RowTemplate>
+                                            <MudTd>@context.Created</MudTd>
+                                            <MudTd>@context.Title</MudTd>
+                                            <MudTd>@context.Description</MudTd>
+                                            <MudTd>@context.Author</MudTd>
+                                        </RowTemplate>
+                                    </MudTable>
+                                </MudText>
+                            </MudTabPanel>
                             <MudTabPanel Text="Online Profile">
                                 <MudText>Content Three</MudText>
                             </MudTabPanel>
@@ -133,7 +151,7 @@
 
 @code {
     private Cariad.Domain.DTOs.Customer.Cus01 _customerDetails = new Domain.DTOs.Customer.Cus01();
-    private IEnumerable<Cariad.Domain.DTOs.Customer.NotesDto> _dummyNotes;
+    private IEnumerable<Cariad.Domain.DTOs.Customer.NotesDto> _dummyNotes = Enumerable.Empty<Cariad.Domain.DTOs.Customer.NotesDto>();
 
     protected override void OnInitialized()
     {

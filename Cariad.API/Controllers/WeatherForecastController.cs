@@ -6,13 +6,13 @@ namespace Cariad.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class WeatherForecastController : ControllerBase
+ public class WeatherForecastController : ControllerBase
 {
     private readonly ApiSettingsOptions _apiSettings;
 
     public WeatherForecastController(IOptions<ApiSettingsOptions> options)
     {
-        _apiSettings = options.Value;
+        _apiSettings = options?.Value ?? throw new ArgumentNullException(nameof(options));
     }
 
     [HttpGet(Name = "GetWeatherForecast")]
@@ -21,7 +21,7 @@ public class WeatherForecastController : ControllerBase
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
             Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            TemperatureC = Random.Shared.Next(-20, 55),
+            TemperatureC = 22,
             Summary = _apiSettings.ClientId
         })
         .ToArray();

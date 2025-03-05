@@ -107,7 +107,7 @@
 </div>
 
 @code {
-    private IEnumerable<CaresScreenModel> _pages;
+    private IEnumerable<CaresScreenModel> _pages = Enumerable.Empty<CaresScreenModel>();
     protected override async Task OnInitializedAsync()
     {
         _pages = await _caresScreenService.GetCaresScreensAsync();

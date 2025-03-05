@@ -1,4 +1,6 @@
-﻿namespace Cariad.Domain.Models
+﻿using System.Globalization;
+
+namespace Cariad.Domain.Models
 {
     public class CaresScreenModel
     {
@@ -10,7 +12,7 @@
         protected static string FormatSlug(string code)
         {
             if (code is null) return string.Empty;
-            return $"/{code.ToLower()}";
+            return $"/{code.ToLower(CultureInfo.CurrentCulture)}";
         }
     }
 }

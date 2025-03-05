@@ -62,7 +62,8 @@
 </section>
 
 @code {
-    private IEnumerable<Cariad.Domain.DTOs.User.ActionsDto> _actions;
+    private IEnumerable<Cariad.Domain.DTOs.User.ActionsDto> _actions = Enumerable.Empty<Cariad.Domain.DTOs.User.ActionsDto>();
+
     protected override async Task OnInitializedAsync()
     {
         _actions = await _actionsRepository.GetActionsAsync();

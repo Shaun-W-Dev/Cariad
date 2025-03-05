@@ -413,7 +413,6 @@
 
 @code {
     private bool _swapPrimaryScreenActions = false;
-    private string _newCustomerNumber = string.Empty;
     private Cariad.Domain.DTOs.Customer.Cus01 _customerDetails = new Domain.DTOs.Customer.Cus01();
     public string PrimaryActionButtonText { get; set; } = "Create";
 
@@ -436,7 +435,6 @@
     private async Task PopulateCustomerDetails()
     {
         _customerDetails = GenerateDummyCustomer();
-        _newCustomerNumber = _customerDetails.CustomerNumber;
         await InvokeAsync(StateHasChanged);
     }
 
