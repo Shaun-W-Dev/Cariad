@@ -11,17 +11,74 @@
         <div class="col">
             <div class="content-wrap">
                 <div class="row">
-                    <div class="col-5">
-                        <MudChip T="string" Color="@( _customerDetails.IsPbsEmpoloyee ? Color.Success : Color.Error )">PBS Employee</MudChip>
-                        <h3 class="pt-2">
-                            @_customerDetails.Title @_customerDetails.Forename @_customerDetails.Surname<br />
-                            <span class="sub-heading d-block pt-2">@_customerDetails.CustomerNumber</span>
-                        </h3>
+                    <div class="col">
+                        <h3 class="pt-2">@_customerDetails.Title @_customerDetails.Forename @_customerDetails.Surname</h3>
+                        <p class="small">
+                            <span class="sub-heading d-block pt-2">@_customerDetails.CustomerNumber</span> &bull; @_customerDetails.Street, @_customerDetails.District, @_customerDetails.Town, @_customerDetails.County, @_customerDetails.Postcode
+                        </p>
+
+                        <div class="grid-4">
+                            <div class="item">
+                                <p>
+                                    <b>Mobile phone</b><br />
+                                    @_customerDetails.MobileTelephoneNumber
+                                </p>
+                            </div>
+                            <div class="item">
+                                <p>
+                                    <b>Home phone</b><br />
+                                    @_customerDetails.HomeTelephoneNumber
+                                </p>
+                            </div>
+                            <div class="item">
+                                <p>
+                                    <b>Work phone</b><br />
+                                    @_customerDetails.WorkTelephoneNumber
+                                </p>
+                            </div>
+                            <div class="item">
+                                <p>
+                                    <b>Fax Phone</b><br />
+                                    @_customerDetails.Fax
+                                </p>
+                            </div>
+                        </div>
+                        <div class="grid-4">
+                            <div class="item">
+                                <p>
+                                    <b>NI Number</b><br />
+                                    @_customerDetails.NationalInsuranceNumber
+                                </p>
+                            </div>
+                            <div class="item">
+                                <p>
+                                    <b>Date of birth</b><br />
+                                    @_customerDetails.DateOfBirth
+                                </p>
+                            </div>
+                            <div class="item">
+                                <p>
+                                    <b>Restrictions</b><br />
+                                    -
+                                </p>
+                            </div>
+                            <div class="item">
+                                <p>
+                                    <b>Email address</b><br />
+                                    @_customerDetails.EmailAddress
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col">
+                        
                         <b>Personal Information</b>
                         <div class="customer-info font-size-small">
                             <div class="info-item d-flex py-2">
                                 <span class="label color-dark-gray text-capitalize">Address:</span>
-                                <span class="value">@_customerDetails.Street, @_customerDetails.District, @_customerDetails.Town, @_customerDetails.County, @_customerDetails.Postcode</span>
+                                
                             </div>
                             <div class="info-item d-flex py-2">
                                 <span class="label color-dark-gray text-capitalize">Date of birth:</span>
@@ -81,61 +138,262 @@
                         </div>
                         <div class="customer-info font-size-small">
                             <b>Contact Preferences</b>
-                            <p class="pt-4">
-                                <MudIcon Icon="@Icons.Material.Filled.CheckCircleOutline" Color="@( _customerDetails.HasMailshotsAllowed ? Color.Success : Color.Default )" />
-                                @(_customerDetails.HasMailshotsAllowed ? $"Customer has agreed to receive mail marketing" : $"Customer has not agreed to receive mail marketing")
-                            </p>
-                            <p>
-                                <MudIcon Icon="@Icons.Material.Filled.CheckCircleOutline" Color="@( _customerDetails.IsEmailsAllowed ? Color.Success : Color.Default )" />
-                                @(_customerDetails.IsEmailsAllowed ? $"Customer has agreed to receive e-mail marketing" : $"Customer has not agreed to receive e-mail marketing")
-                            </p>
-                            <p>
-                                <MudIcon Icon="@Icons.Material.Filled.CheckCircleOutline" Color="@( _customerDetails.IsTelephoneAllowed ? Color.Success : Color.Default )" />
-                                @(_customerDetails.IsTelephoneAllowed ? $"Customer has agreed to receive telephone marketing" : $"Customer has not agreed to receive telephone marketing")
-                            </p>
-                            <p>
-                                <MudIcon Icon="@Icons.Material.Filled.CheckCircleOutline" Color="@( _customerDetails.IsSmsAllowed ? Color.Success : Color.Default )" />
-                                @(_customerDetails.IsSmsAllowed ? $"Customer has agreed to receive sms messages" : $"Customer has not agreed to receive sms messages")
-                            </p>
-                            <p>
-                                <MudIcon Icon="@Icons.Material.Filled.CheckCircleOutline" Color="@( _customerDetails.HasMembersRewards ? Color.Success : Color.Default )" />
-                                @(_customerDetails.HasMembersRewards ? $"Customer has agreed to receive membership rewards" : $"Customer has not agreed to receive membership rewards")
-                            </p>
-                            <p>
-                                <MudIcon Icon="@Icons.Material.Filled.CheckCircleOutline" Color="@( _customerDetails.HasWelshMailshows ? Color.Success : Color.Default )" />
-                                @(_customerDetails.HasWelshMailshows ? $"Customer has agreed to receive Welsh communication" : $"Customer has not agreed to receive Welsh communication")
-                            </p>
+                            
                         </div>
                     </div>
                     <div class="col">
                         <MudTabs Outlined="false" Position="@Position.Top" Rounded="true" Border="false" ApplyEffectsToContainer="true" Class="mt-8" PanelClass="pa-6">
-                            <MudTabPanel Text="Customer Details" ToolTip="View all customer information">
+                            <MudTabPanel Text="Overview">
                                 <MudText>
-
+                                    <div class="mb-4">
+                                        <h3>Savings accounts</h3>
+                                    </div>
+                                    <div class="mb-4">
+                                        <h3>Mortgage accounts</h3>
+                                    </div>
                                 </MudText>
                             </MudTabPanel>
-                            <MudTabPanel Text="Accounts">
-                                <MudText>Current and linked</MudText>
+                            <MudTabPanel Text="Customer Details">
+                                <MudText> 
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <div class="mb-4">
+                                                <h5>Relationship with Society details</h5>
+                                                <div class="grid-5">
+                                                    <div class="item">
+                                                        <p>
+                                                            <b>Membership length</b><br />
+                                                            @_customerDetails.MembershipLength
+                                                        </p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <p>
+                                                            <b>Charitable assignment</b><br />
+                                                            @_customerDetails.CharitableAssignement
+                                                        </p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <p>
+                                                            <b>1st account opening date</b><br />
+                                                            @_customerDetails.AccountOpeningDate
+                                                        </p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <p>
+                                                            <b>Creation date</b><br />
+                                                            @_customerDetails.DateCreated
+                                                        </p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <p>
+                                                            <b>Record added by</b><br />
+                                                            @_customerDetails.CreatedBy
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="grid-5">
+                                                    <div class="item">
+                                                        <p>
+                                                            <b>Last updated date</b><br />
+                                                            @_customerDetails.LastUpdated
+                                                        </p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <p>
+                                                            <b>PBS employee indicator</b><br />
+                                                            @(_customerDetails.IsPbsEmpoloyee ? "Yes" : "No")
+                                                        </p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <p>
+                                                            <b>E-ID</b><br />
+                                                            Passed
+                                                        </p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <p>
+                                                            <b>Source</b><br />
+                                                            @_customerDetails.Source
+                                                        </p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <p>
+                                                            <b>Delivery channel</b><br />
+                                                            @_customerDetails.DeliveryChannel
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <h5>More details</h5>
+                                                <div class="grid-4">
+                                                    <div class="item">
+                                                        <p>
+                                                            <b>Nationality</b><br />
+                                                            @_customerDetails.Nationality
+                                                        </p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <p>
+                                                            <b>Country of birth</b><br />
+                                                            @_customerDetails.CountryOfBirth
+                                                        </p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <p>
+                                                            <b>City of birth</b><br />
+                                                            @_customerDetails.BirthPlace
+                                                        </p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <p>
+                                                            <b>Date of death</b><br />
+                                                            @_customerDetails.DateOfDeath
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="grid-4">
+                                                    <div class="item">
+                                                        <p>
+                                                            <b>Sex/Status</b><br />
+                                                            @_customerDetails.SexStatus
+                                                        </p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <p>
+                                                            <b>Marital status</b><br />
+                                                            @_customerDetails.MaritalStatus
+                                                        </p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <p>
+                                                            <b>Occupation</b><br />
+                                                            @_customerDetails.Occupation
+                                                        </p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <p>
+                                                            <b>Company</b><br />
+                                                            @_customerDetails.Company
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="grid-4 mb-2">
+                                                    <div class="item">
+                                                        <p>
+                                                            <b>Charity Number</b><br />
+                                                            @_customerDetails.CharityNumber
+                                                        </p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <p>
+                                                            <b>Citizen of the USA</b><br />
+                                                            @_customerDetails.IsAUSCitizen
+                                                        </p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <p>
+                                                            <b>Foreign Address</b><br />
+                                                            @_customerDetails.HasForeignAddress
+                                                        </p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <p>
+                                                            <b>Unknown address</b><br />
+                                                            @_customerDetails.IsAddressKnown
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <p>
+                                                    <b class="text-capitalize">Tin details and tax residency</b>
+                                                </p>
+                                                <div class="grid-4">
+                                                    <div class="item">
+                                                        <p>
+                                                            <b>Tax resident other than uk</b><br />
+                                                            @_customerDetails.IsTaxResidentOutsideUK
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="grid-3">
+                                                    <div class="item">
+                                                        <p>
+                                                            <b>Tax residency 1</b><br />
+                                                            @_customerDetails.TaxResidencyCountry1
+                                                        </p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <p>
+                                                            <b>Tax residency 2</b><br />
+                                                            @_customerDetails.TaxResidencyCountry2
+                                                        </p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <p>
+                                                            <b>Tax residency 3</b><br />
+                                                            @_customerDetails.TaxResidencyCountry3
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="grid-3">
+                                                    <div class="item">
+                                                        <p>
+                                                            <b>Tax res. 1 TIN number</b><br />
+                                                            @_customerDetails.TinNumber1
+                                                        </p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <p>
+                                                            <b>Tax res. 2 TIN number</b><br />
+                                                            @_customerDetails.TinNumber2
+                                                        </p>
+                                                    </div>
+                                                    <div class="item">
+                                                        <p>
+                                                            <b>Tax res. 3 TIN number</b><br />
+                                                            @_customerDetails.TinNumber3
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <h5>Preferences</h5>
+                                            <p class="pt-4">
+                                                <MudIcon Icon="@Icons.Material.Filled.CheckCircleOutline" Color="@( _customerDetails.HasMailshotsAllowed ? Color.Success : Color.Default )" />
+                                                @(_customerDetails.HasMailshotsAllowed ? $"Customer has agreed to receive mail marketing" : $"Customer has not agreed to receive mail marketing")
+                                            </p>
+                                            <p>
+                                                <MudIcon Icon="@Icons.Material.Filled.CheckCircleOutline" Color="@( _customerDetails.IsEmailsAllowed ? Color.Success : Color.Default )" />
+                                                @(_customerDetails.IsEmailsAllowed ? $"Customer has agreed to receive e-mail marketing" : $"Customer has not agreed to receive e-mail marketing")
+                                            </p>
+                                            <p>
+                                                <MudIcon Icon="@Icons.Material.Filled.CheckCircleOutline" Color="@( _customerDetails.IsTelephoneAllowed ? Color.Success : Color.Default )" />
+                                                @(_customerDetails.IsTelephoneAllowed ? $"Customer has agreed to receive telephone marketing" : $"Customer has not agreed to receive telephone marketing")
+                                            </p>
+                                            <p>
+                                                <MudIcon Icon="@Icons.Material.Filled.CheckCircleOutline" Color="@( _customerDetails.IsSmsAllowed ? Color.Success : Color.Default )" />
+                                                @(_customerDetails.IsSmsAllowed ? $"Customer has agreed to receive sms messages" : $"Customer has not agreed to receive sms messages")
+                                            </p>
+                                            <p>
+                                                <MudIcon Icon="@Icons.Material.Filled.CheckCircleOutline" Color="@( _customerDetails.HasMembersRewards ? Color.Success : Color.Default )" />
+                                                @(_customerDetails.HasMembersRewards ? $"Customer has agreed to receive membership rewards" : $"Customer has not agreed to receive membership rewards")
+                                            </p>
+                                            <p>
+                                                <MudIcon Icon="@Icons.Material.Filled.CheckCircleOutline" Color="@( _customerDetails.HasWelshMailshows ? Color.Success : Color.Default )" />
+                                                @(_customerDetails.HasWelshMailshows ? $"Customer has agreed to receive Welsh communication" : $"Customer has not agreed to receive Welsh communication")
+                                            </p>
+                                        </div>
+                                    </div>
+                                            
+                                </MudText>
                             </MudTabPanel>
                             <MudTabPanel Text="Secure Messages">
                                 <MudText>Content Three</MudText>
                             </MudTabPanel>
                             <MudTabPanel Text="Notes">
                                 <MudText>
-                                    <MudTable Items="@_dummyNotes" Class="table-striped">
-                                        <HeaderContent>
-                                            <MudTh>Created</MudTh>
-                                            <MudTh>Title</MudTh>
-                                            <MudTh>Description</MudTh>
-                                            <MudTh>Author</MudTh>
-                                        </HeaderContent>
-                                        <RowTemplate>
-                                            <MudTd>@context.Created</MudTd>
-                                            <MudTd>@context.Title</MudTd>
-                                            <MudTd>@context.Description</MudTd>
-                                            <MudTd>@context.Author</MudTd>
-                                        </RowTemplate>
-                                    </MudTable>
+                                    <Cariad.UINoAuth.Components.Shared.ViewNotes Notes="_dummyNotes"></Cariad.UINoAuth.Components.Shared.ViewNotes>
                                 </MudText>
                             </MudTabPanel>
                             <MudTabPanel Text="Online Profile">

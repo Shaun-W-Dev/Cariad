@@ -1,0 +1,29 @@
+﻿@if (Notes == null)
+{
+    <p>
+        There are no notes to display.
+    </p>
+}
+else
+{
+    <MudTable Items="Notes" Class="table-striped">
+        <HeaderContent>
+            <MudTh>Created</MudTh>
+            <MudTh>Title</MudTh>
+            <MudTh>Description</MudTh>
+            <MudTh>Author</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd>@context.Created</MudTd>
+            <MudTd>@context.Title</MudTd>
+            <MudTd>@context.Description</MudTd>
+            <MudTd>@context.Author</MudTd>
+        </RowTemplate>
+    </MudTable>
+}
+
+@code {
+
+    [Parameter]
+    public IEnumerable<Cariad.Domain.DTOs.Customer.NotesDto> Notes { get; set; } = Enumerable.Empty<Cariad.Domain.DTOs.Customer.NotesDto>();
+}
