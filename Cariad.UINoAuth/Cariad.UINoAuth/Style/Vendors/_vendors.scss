@@ -1,7 +1,12 @@
 ﻿@import '../Utilities/_variables.scss';
 
-.mud-button{
-    text-transform:capitalize;
+
+.mud-typography-body1 {
+    font-size: $font-size-base;
+}
+
+.mud-button {
+    text-transform: capitalize;
 }
 
 .mud-elevation-1 {

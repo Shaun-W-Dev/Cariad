@@ -1,0 +1,30 @@
+﻿<MudDataGrid Items="@_messages" Filterable="false" SortMode="@SortMode.None" Groupable="false">
+    <Columns>
+        <PropertyColumn Property="x => x.From" />
+        <PropertyColumn Property="x => x.Subject" />
+        <PropertyColumn Property="x => x.AssignedTo" />
+        <PropertyColumn Property="x => x.LastReply" />
+    </Columns>
+</MudDataGrid>
+
+@code {
+    private readonly List<Domain.DTOs.Customer.SecureMessageDto> _messages = new List<Domain.DTOs.Customer.SecureMessageDto>
+    {
+        new Domain.DTOs.Customer.SecureMessageDto
+        {
+            MessageId = 1,
+            From = "sue.denim@principality.co.uk",
+            Subject = "New Mortgage Offer",
+            AssignedTo = "S Denim",
+            LastReply = DateTime.Now
+        },
+        new Domain.DTOs.Customer.SecureMessageDto
+        {
+            MessageId = 2,
+            From = "sue.denim@principality.co.uk",
+            Subject = "Another Mortgage Offer",
+            AssignedTo = "S Denim",
+            LastReply = DateTime.Now.AddDays(-7)
+        }
+    };
+}

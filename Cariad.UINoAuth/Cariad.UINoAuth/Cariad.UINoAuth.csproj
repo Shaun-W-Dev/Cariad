@@ -18,6 +18,7 @@
 	<PackageReference Include="Serilog" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Style\Vendors\Fonts\" />
     <Folder Include="wwwroot\lib\jquery-validation-unobtrusive\" />
     <Folder Include="wwwroot\lib\jquery-validation\dist\" />
     <Folder Include="wwwroot\lib\jquery\dist\" />

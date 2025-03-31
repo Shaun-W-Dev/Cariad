@@ -1,0 +1,33 @@
+﻿<MudDataGrid Items="@_accounts" Filterable="false" SortMode="@SortMode.None" Groupable="false">
+    <Columns>
+        <PropertyColumn Property="x => x.AccountNumber" />
+        <PropertyColumn Property="x => x.Name" />
+        <PropertyColumn Property="x => x.InterestRate" />
+        <PropertyColumn Property="x => x.CurrentBalance" />
+        <PropertyColumn Property="x => x.RepaymentBalance" />
+    </Columns>
+</MudDataGrid>
+
+@code {
+    private readonly List<Domain.DTOs.Accounts.MortageSummaryDto> _accounts = new List<Domain.DTOs.Accounts.MortageSummaryDto>
+    {
+        new Domain.DTOs.Accounts.MortageSummaryDto
+        {
+            MortageId = 1,
+            AccountNumber = 510812345,
+            Name = "Maturity Standard Variable Rate",
+            InterestRate = 0.5m,
+            CurrentBalance = 12.11m,
+            RepaymentBalance = 12.11m
+        },
+        new Domain.DTOs.Accounts.MortageSummaryDto
+        {
+            MortageId = 2,
+            AccountNumber = 510854321,
+            Name = "Non FSA Lifestyle",
+            InterestRate = 0.20m,
+            CurrentBalance = 344.56m,
+            RepaymentBalance = 334.56m
+        }
+    };
+}

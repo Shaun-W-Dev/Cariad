@@ -1,0 +1,33 @@
+﻿<MudDataGrid Items="@_accounts" Filterable="false" SortMode="@SortMode.None" Groupable="false">
+    <Columns>
+        <PropertyColumn Property="x => x.AccountNumber" />
+        <PropertyColumn Property="x => x.Name" />
+        <PropertyColumn Property="x => x.InterestRate" />
+        <PropertyColumn Property="x => x.CurrentBalance" />
+        <PropertyColumn Property="x => x.ClearedBalance" />
+    </Columns>
+</MudDataGrid>
+
+@code {
+    private readonly List<Domain.DTOs.Accounts.SavingsSummaryDto> _accounts = new List<Domain.DTOs.Accounts.SavingsSummaryDto>
+    {
+        new Domain.DTOs.Accounts.SavingsSummaryDto
+        {
+            SavingsId = 1,
+            AccountNumber = 510812345,
+            Name = "Instant Access Savings Account",
+            InterestRate = 0.5m,
+            CurrentBalance = 12.11m,
+            ClearedBalance = 12.11m
+        },
+        new Domain.DTOs.Accounts.SavingsSummaryDto
+        {
+            SavingsId = 2,
+            AccountNumber = 510854321,
+            Name = "Principality Cash Isa",
+            InterestRate = 0.20m,
+            CurrentBalance = 344.56m,
+            ClearedBalance = 334.56m
+        }
+    };
+}

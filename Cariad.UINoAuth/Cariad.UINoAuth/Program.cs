@@ -1,15 +1,45 @@
 global using Cariad.Domain.Models;
-global using Cariad.Domain.DTOs;
-global using System.Text;
 using Cariad.UINoAuth.Components;
 using Cariad.Application.Interfaces;
 using Cariad.Application.Services;
 using Cariad.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Components.Server;
 using MudBlazor.Services;
+using System.IO.Compression;
+using Microsoft.AspNetCore.ResponseCompression;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddResponseCompression(options =>
+{
+    options.EnableForHttps = true; 
+    options.MimeTypes =
+    [
+        "text/plain",
+        "text/css",
+        "application/javascript",
+        "text/html",
+        "application/json",
+        "application/xml",
+        "image/svg+xml",
+        "application/wasm"
+    ];
+
+    options.Providers.Add<BrotliCompressionProvider>();
+    options.Providers.Add<GzipCompressionProvider>();
+});
+
+builder.Services.Configure<BrotliCompressionProviderOptions>(options =>
+{
+    options.Level = CompressionLevel.Optimal;
+});
+
+builder.Services.Configure<GzipCompressionProviderOptions>(options =>
+{
+    options.Level = CompressionLevel.Optimal;
+});
+
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
@@ -27,9 +57,17 @@ builder.Services.AddSingleton<ICaresScreensService, CaresScreenService>();
 builder.Services.AddSingleton<ICaresScreensRepository, CaresScreenRepo>();
 builder.Services.AddSingleton<IActionsRepository, ActionsRepository>();
 
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+app.UseStaticFiles(new StaticFileOptions
+{
+    OnPrepareResponse = ctx =>
+    {
+        ctx.Context.Response.Headers.Append("Cache-Control", "public, max-age=604800");
+    }
+});
+
 if (app.Environment.IsDevelopment())
 {
     app.UseWebAssemblyDebugging();
@@ -42,6 +80,8 @@ else
 }
 
 app.UseHttpsRedirection();
+app.UseResponseCompression();
+app.UseStaticFiles();
 app.UseAntiforgery();
 app.MapStaticAssets();
 app.MapRazorComponents<App>()

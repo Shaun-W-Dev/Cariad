@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col">
                         <h3 class="pt-2">@_customerDetails.Title @_customerDetails.Forename @_customerDetails.Surname</h3>
-                        <p class="small">
+                        <p>
                             <span class="sub-heading d-block pt-2">@_customerDetails.CustomerNumber</span> &bull; @_customerDetails.Street, @_customerDetails.District, @_customerDetails.Town, @_customerDetails.County, @_customerDetails.Postcode
                         </p>
 
@@ -71,90 +71,26 @@
                         </div>
 
                     </div>
-
+                </div>
+            </div>
+            <div class="content-wrap mt-4">
+                <div class="row">
                     <div class="col">
-                        
-                        <b>Personal Information</b>
-                        <div class="customer-info font-size-small">
-                            <div class="info-item d-flex py-2">
-                                <span class="label color-dark-gray text-capitalize">Address:</span>
-                                
-                            </div>
-                            <div class="info-item d-flex py-2">
-                                <span class="label color-dark-gray text-capitalize">Date of birth:</span>
-                                <span class="value">@_customerDetails.DateOfBirth</span>
-                            </div>
-                            <div class="info-item d-flex py-2">
-                                <span class="label color-dark-gray text-capitalize">
-                                    NI Number:
-                                </span>
-                                <span class="value">
-                                    @_customerDetails.NationalInsuranceNumber
-                                </span>
-                            </div>
-                            <div class="info-item d-flex py-2">
-                                <span class="label color-dark-gray text-capitalize">
-                                    Restrictions:
-                                </span>
-                                <span class="value">
-                                    -                                    
-                                </span>
-                            </div>
-                        </div>
-                        <b>Contact Information</b>
-                        <div class="customer-info font-size-small">
-                            <div class="info-item d-flex py-2">
-                                <span class="label color-dark-gray text-capitalize">
-                                    Email Address:
-                                </span>
-                                <span class="value">
-                                    @_customerDetails.EmailAddress
-                                </span>
-                            </div>
-                            <div class="info-item d-flex py-2">
-                                <span class="label color-dark-gray text-capitalize">
-                                    Home Phone:
-                                </span>
-                                <span class="value">
-                                    @_customerDetails.HomeTelephoneNumber
-                                </span>
-                            </div>
-                            <div class="info-item d-flex py-2">
-                                <span class="label color-dark-gray text-capitalize">
-                                    Work Phone:
-                                </span>
-                                <span class="value">
-                                    @_customerDetails.WorkTelephoneNumber
-                                </span>
-                            </div>
-                            <div class="info-item d-flex py-2">
-                                <span class="label color-dark-gray text-capitalize">
-                                    Mobile Phone:
-                                </span>
-                                <span class="value">
-                                    @_customerDetails.MobileTelephoneNumber
-                                </span>
-                            </div>
-                        </div>
-                        <div class="customer-info font-size-small">
-                            <b>Contact Preferences</b>
-                            
-                        </div>
-                    </div>
-                    <div class="col">
-                        <MudTabs Outlined="false" Position="@Position.Top" Rounded="true" Border="false" ApplyEffectsToContainer="true" Class="mt-8" PanelClass="pa-6">
+                        <MudTabs Outlined="false" Position="@Position.Top" Rounded="true" Border="false" ApplyEffectsToContainer="true" PanelClass="pt-4">
                             <MudTabPanel Text="Overview">
                                 <MudText>
                                     <div class="mb-4">
-                                        <h3>Savings accounts</h3>
+                                        <h4>Savings accounts</h4>
+                                        <ViewSavingsAccountsSummary></ViewSavingsAccountsSummary>
                                     </div>
                                     <div class="mb-4">
-                                        <h3>Mortgage accounts</h3>
+                                        <h4>Mortgage accounts</h4>
+                                        <ViewMortagageAccountsSummary></ViewMortagageAccountsSummary>
                                     </div>
                                 </MudText>
                             </MudTabPanel>
                             <MudTabPanel Text="Customer Details">
-                                <MudText> 
+                                <MudText>
                                     <div class="row">
                                         <div class="col-8">
                                             <div class="mb-4">
@@ -359,45 +295,150 @@
                                         </div>
                                         <div class="col-4">
                                             <h5>Preferences</h5>
-                                            <p class="pt-4">
-                                                <MudIcon Icon="@Icons.Material.Filled.CheckCircleOutline" Color="@( _customerDetails.HasMailshotsAllowed ? Color.Success : Color.Default )" />
-                                                @(_customerDetails.HasMailshotsAllowed ? $"Customer has agreed to receive mail marketing" : $"Customer has not agreed to receive mail marketing")
-                                            </p>
-                                            <p>
-                                                <MudIcon Icon="@Icons.Material.Filled.CheckCircleOutline" Color="@( _customerDetails.IsEmailsAllowed ? Color.Success : Color.Default )" />
-                                                @(_customerDetails.IsEmailsAllowed ? $"Customer has agreed to receive e-mail marketing" : $"Customer has not agreed to receive e-mail marketing")
-                                            </p>
-                                            <p>
-                                                <MudIcon Icon="@Icons.Material.Filled.CheckCircleOutline" Color="@( _customerDetails.IsTelephoneAllowed ? Color.Success : Color.Default )" />
-                                                @(_customerDetails.IsTelephoneAllowed ? $"Customer has agreed to receive telephone marketing" : $"Customer has not agreed to receive telephone marketing")
-                                            </p>
-                                            <p>
-                                                <MudIcon Icon="@Icons.Material.Filled.CheckCircleOutline" Color="@( _customerDetails.IsSmsAllowed ? Color.Success : Color.Default )" />
-                                                @(_customerDetails.IsSmsAllowed ? $"Customer has agreed to receive sms messages" : $"Customer has not agreed to receive sms messages")
-                                            </p>
-                                            <p>
-                                                <MudIcon Icon="@Icons.Material.Filled.CheckCircleOutline" Color="@( _customerDetails.HasMembersRewards ? Color.Success : Color.Default )" />
-                                                @(_customerDetails.HasMembersRewards ? $"Customer has agreed to receive membership rewards" : $"Customer has not agreed to receive membership rewards")
-                                            </p>
-                                            <p>
-                                                <MudIcon Icon="@Icons.Material.Filled.CheckCircleOutline" Color="@( _customerDetails.HasWelshMailshows ? Color.Success : Color.Default )" />
-                                                @(_customerDetails.HasWelshMailshows ? $"Customer has agreed to receive Welsh communication" : $"Customer has not agreed to receive Welsh communication")
-                                            </p>
+                                            <div class="grid-3">
+                                                <div class="item">
+                                                    <p class="fw-bold">
+                                                        Actions
+                                                    </p>
+                                                </div>
+                                                <div class="item"></div>
+                                                <div class="item">
+                                                    <p class="fw-bold">
+                                                        Last Update
+                                                    </p>
+                                                </div>
+                                                <div class="item">
+                                                    <p>
+                                                        Mail marketing
+                                                    </p>
+                                                </div>
+                                                <div class="item">
+                                                    <p>
+                                                        @(_customerDetails.HasMailshotsAllowed ? "Yes" : "No")
+                                                    </p>
+                                                </div>
+                                                <div class="item">
+                                                    <p>
+                                                        01/01/2020
+                                                    </p>
+                                                </div>
+                                                <div class="item">
+                                                    <p>
+                                                        Email marketing
+                                                    </p>
+                                                </div>
+                                                <div class="item">
+                                                    <p>
+                                                        @(_customerDetails.IsEmailsAllowed ? "Yes" : "No")
+                                                    </p>
+                                                </div>
+                                                <div class="item">
+                                                    <p>
+                                                        01/01/2020
+                                                    </p>
+                                                </div>
+                                                <div class="item">
+                                                    <p>
+                                                        Telephone marketing
+                                                    </p>
+                                                </div>
+                                                <div class="item">
+                                                    <p>
+                                                        @(_customerDetails.IsTelephoneAllowed ? "Yes" : "No")
+                                                    </p>
+                                                </div>
+                                                <div class="item">
+                                                    <p>
+                                                        01/01/2020
+                                                    </p>
+                                                </div>
+                                                <div class="item">
+                                                    <p>
+                                                        SMS marketing
+                                                    </p>
+                                                </div>
+                                                <div class="item">
+                                                    <p>
+                                                        @(_customerDetails.IsSmsAllowed ? "Yes" : "No")
+                                                    </p>
+                                                </div>
+                                                <div class="item">
+                                                    <p>
+                                                        01/01/2020
+                                                    </p>
+                                                </div>
+                                                <div class="item">
+                                                    <p>
+                                                        Member rewards
+                                                    </p>
+                                                </div>
+                                                <div class="item">
+                                                    <p>
+                                                        @(_customerDetails.HasMembersRewards ? "Yes" : "No")
+                                                    </p>
+                                                </div>
+                                                <div class="item">
+                                                    <p>
+                                                        01/01/2020
+                                                    </p>
+                                                </div>
+                                                <div class="item">
+                                                    <p>
+                                                        Welsh communication
+                                                    </p>
+                                                </div>
+                                                <div class="item">
+                                                    <p>
+                                                        @(_customerDetails.HasWelshMailshows ? "Yes" : "No")
+                                                    </p>
+                                                </div>
+                                                <div class="item">
+                                                    <p>
+                                                        01/01/2020
+                                                    </p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                            
                                 </MudText>
                             </MudTabPanel>
                             <MudTabPanel Text="Secure Messages">
-                                <MudText>Content Three</MudText>
+                                <MudText>
+                                    <ViewSecureMessages></ViewSecureMessages>
+                                </MudText>
                             </MudTabPanel>
-                            <MudTabPanel Text="Notes">
+                            <MudTabPanel Text="Letters">
+                                <MudText>
+                                    <p>
+                                        No items to show…
+                                    </p>
+                                </MudText>
+                            </MudTabPanel>
+                            <MudTabPanel Text="Linked Accounts">
+                                <MudText>
+                                    <p>
+                                        No items to show…
+                                    </p>
+                                </MudText>
+                            </MudTabPanel>
+                            <MudTabPanel Text="Notes" Class="d-none">
                                 <MudText>
                                     <Cariad.UINoAuth.Components.Shared.ViewNotes Notes="_dummyNotes"></Cariad.UINoAuth.Components.Shared.ViewNotes>
                                 </MudText>
                             </MudTabPanel>
                             <MudTabPanel Text="Online Profile">
-                                <MudText>Content Three</MudText>
+                                <MudText> 
+                                    <p>
+                                        No items to show…
+                                    </p>
+                                </MudText>
+                            </MudTabPanel>
+                            <MudTabPanel Text="Profile Activity">
+                                <MudText>
+                                    <p>
+                                        No items to show…
+                                    </p>
+                                </MudText>
                             </MudTabPanel>
                         </MudTabs>
                     </div>
