@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cariad.UINoAuth", "Cariad.U
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cariad.UINoAuth.Client", "Cariad.UINoAuth\Cariad.UINoAuth.Client\Cariad.UINoAuth.Client.csproj", "{181ABA79-CB02-45AA-A9F2-35FDA6F3BBFC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cariad.Web", "Cariad.Web\Cariad.Web.csproj", "{F9056D82-8232-4683-A0F5-0F06EE664A8A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +56,10 @@ Global
 		{181ABA79-CB02-45AA-A9F2-35FDA6F3BBFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{181ABA79-CB02-45AA-A9F2-35FDA6F3BBFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{181ABA79-CB02-45AA-A9F2-35FDA6F3BBFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9056D82-8232-4683-A0F5-0F06EE664A8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9056D82-8232-4683-A0F5-0F06EE664A8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9056D82-8232-4683-A0F5-0F06EE664A8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9056D82-8232-4683-A0F5-0F06EE664A8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,6 +71,7 @@ Global
 		{A773D91F-4046-4EC8-ADE8-F385F80D2B0F} = {970FA12B-9499-4B23-94B7-438095D60987}
 		{DA75138F-EC38-40CD-B864-FA95E58560EB} = {970FA12B-9499-4B23-94B7-438095D60987}
 		{181ABA79-CB02-45AA-A9F2-35FDA6F3BBFC} = {970FA12B-9499-4B23-94B7-438095D60987}
+		{F9056D82-8232-4683-A0F5-0F06EE664A8A} = {970FA12B-9499-4B23-94B7-438095D60987}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A54C4E0B-3D23-4931-B42E-E4FB26B6443B}

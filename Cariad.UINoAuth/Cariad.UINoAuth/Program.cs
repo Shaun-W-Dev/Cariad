@@ -1,4 +1,5 @@
 global using Cariad.Domain.Models;
+global using Cariad.Domain.DTOs;
 using Cariad.UINoAuth.Components;
 using Cariad.Application.Interfaces;
 using Cariad.Application.Services;

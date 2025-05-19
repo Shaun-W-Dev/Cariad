@@ -1,14 +1,76 @@
 ﻿@page "/"
+@inject NavigationManager Navigation
+@inject HttpClient Http
+
 @rendermode InteractiveServer
 
 @inject IActionsRepository _actionsRepository
 <PageTitle> Cariad | Welcome</PageTitle>
 
-<ScreenHeading PageTitle="Croeso Shaun"></ScreenHeading>
+<ScreenHeading PageTitle="Croeso, Sue Denim"></ScreenHeading>
 
 <section>
     <div class="container">
-
+        <div class="row">
+            <div class="col">
+                <h2>Search for one of the options below</h2>
+                <div class="grid-4">
+                    <div class="item">
+                        <label for="AccountNumber">Account Number</label>
+                        <input @bind="SearchByAccountNumber" id="AccountNumber" />
+                    </div>
+                    <div class="item">
+                        <label for="UserId">User ID</label>
+                        <input @bind="SearchByUserId" id="UserId" />
+                    </div>
+                    <div class="item">
+                        <label for="CustomerNumber">Customer Number</label>
+                        <input @bind="SearchByCustomerNumber" id="CustomerNumber" />
+                    </div>
+                    <div class="item">
+                        @if (IsLoading)
+                        {
+                            <p>Searching...</p>
+                        }
+                        else
+                        {
+                            <button @onclick="SearchCustomer" class="btn btn-primary">Search</button>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <h3>Or search for a customer name with date of birth or postcode</h3>
+                <div class="grid-5">
+                    <div class="item">
+                        <label for="Forename">Forename</label>
+                        <input @bind="SearchByForename" id="Forename" />
+                    </div>
+                    <div class="item">
+                        <label for="Surname">Surname</label>
+                        <input @bind="SearchBySurname" id="Surname" />
+                    </div>
+                    <div class="item">
+                        <label for="Dob">Date of birth</label>
+                        <input @bind="SearchByDob" id="Dob" />
+                    </div>
+                    <div class="item">
+                        <label for="Postcode">Postcode</label>
+                        <input @bind="SearchByPostcode" id="Postcode" />
+                    </div>
+                    <div class="item">
+                        @if (IsLoading)
+                        {
+                            <p>Searching...</p>
+                        }
+                        else
+                        {
+                            <button @onclick="SearchCustomer" class="btn btn-primary">Search</button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="container">
         <div class="row">
@@ -62,13 +124,113 @@
             </div>
         </div>
     </div>
+    @if (ErrorMessage.Length > 0)
+    {
+        <MudAlert Severity="Severity.Error" Class="mt-2">@ErrorMessage</MudAlert>
+    }
 </section>
 
 @code {
     private IEnumerable<Cariad.Domain.DTOs.User.ActionsDto> _actions = Enumerable.Empty<Cariad.Domain.DTOs.User.ActionsDto>();
+    private string SearchByAccountNumber = string.Empty;
+    private string SearchByCustomerNumber = string.Empty;
+    private string SearchByUserId = string.Empty;
+    private string SearchByForename = string.Empty;
+    private string SearchBySurname = string.Empty;
+    private string SearchByDob = string.Empty;
+    private string SearchByPostcode = string.Empty;
+    private bool IsLoading = false;
+    private string ErrorMessage = string.Empty;
+
 
     protected override async Task OnInitializedAsync()
     {
         _actions = await _actionsRepository.GetActionsAsync();
+    }
+
+    private async Task SearchCustomer()
+    {
+        if (IsAllFieldsEmpty())
+        {
+            ErrorMessage = "Please enter at least one search field.";
+            return;
+        }
+
+        IsLoading = true;
+
+        try
+        {
+            var queryString = BuildQueryString();
+            var response = await Http.GetAsync($"/api/customers/search?{queryString}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var customer = await response.Content.ReadFromJsonAsync<CustomerSearchDto>();
+
+                if (customer != null)
+                {
+                    Navigation.NavigateTo($"/customers?customernumber={customer.CustomerNumber}");
+                }
+                else
+                {
+                    ErrorMessage = "Customer not found.";
+                }
+            }
+            else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                ErrorMessage = "No customers matched your search.";
+            }
+            else
+            {
+                ErrorMessage = "An error occurred while searching.";
+            }
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"An error occurred: {ex.Message}";
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+
+    private bool IsAllFieldsEmpty()
+    {
+        return string.IsNullOrWhiteSpace(SearchByAccountNumber) &&
+               string.IsNullOrWhiteSpace(SearchByCustomerNumber) &&
+               string.IsNullOrWhiteSpace(SearchByUserId) &&
+               string.IsNullOrWhiteSpace(SearchByForename) &&
+               string.IsNullOrWhiteSpace(SearchBySurname) &&
+               string.IsNullOrWhiteSpace(SearchByDob) &&
+               string.IsNullOrWhiteSpace(SearchByPostcode);
+    }
+
+    private string BuildQueryString()
+    {
+        var queryParams = new List<string>();
+
+        if (!string.IsNullOrWhiteSpace(SearchByAccountNumber))
+            queryParams.Add($"accountNumber={SearchByAccountNumber}");
+
+        if (!string.IsNullOrWhiteSpace(SearchByCustomerNumber))
+            queryParams.Add($"customerNumber={SearchByCustomerNumber}");
+
+        if (!string.IsNullOrWhiteSpace(SearchByUserId))
+            queryParams.Add($"userId={SearchByUserId}");
+
+        if (!string.IsNullOrWhiteSpace(SearchByForename))
+            queryParams.Add($"forename={SearchByForename}");
+
+        if (!string.IsNullOrWhiteSpace(SearchBySurname))
+            queryParams.Add($"surname={SearchBySurname}");
+
+        if (!string.IsNullOrWhiteSpace(SearchByDob))
+            queryParams.Add($"dob={SearchByDob}");
+
+        if (!string.IsNullOrWhiteSpace(SearchByPostcode))
+            queryParams.Add($"postcode={SearchByPostcode}");
+
+        return string.Join("&", queryParams);
     }
 }
